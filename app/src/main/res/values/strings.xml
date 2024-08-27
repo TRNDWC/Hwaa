@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Hwaa</string>
+    <string name="not_connected_internet">Internet is not connected</string>
+</resources>
