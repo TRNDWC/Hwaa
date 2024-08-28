@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_navigation"
+    app:startDestination="@id/bookFragment">
+
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.example.hwaa.fragment.main.book.BookFragment"
+        android:label="fragment_book"
+        tools:layout="@layout/fragment_book" />
+    <fragment
+        android:id="@+id/vocabularyFragment"
+        android:name="com.example.hwaa.fragment.main.vocabulary.VocabularyFragment"
+        android:label="fragment_vocabulary"
+        tools:layout="@layout/fragment_vocabulary" />
+    <fragment
+        android:id="@+id/forumFragment"
+        android:name="com.example.hwaa.fragment.main.forum.ForumFragment"
+        android:label="fragment_forum"
+        tools:layout="@layout/fragment_forum" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hwaa.fragment.main.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
