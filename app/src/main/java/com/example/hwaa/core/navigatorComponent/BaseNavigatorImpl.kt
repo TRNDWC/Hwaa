@@ -3,8 +3,8 @@ package com.example.hwaa.core.navigatorComponent
 import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.navigation.NavController
-import timber.log.Timber
 import java.lang.ref.WeakReference
+import timber.log.Timber
 
 
 abstract class BaseNavigatorImpl : BaseNavigator {

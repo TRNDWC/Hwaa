@@ -3,6 +3,7 @@ package com.example.hwaa
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.hwaa.core.base.BaseActivity
 import com.example.hwaa.databinding.ActivityMainBinding
 import com.example.hwaa.navigation.AppNavigation
@@ -25,5 +26,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
         appNavigation.bind(navController)
+        binding.bottomNavigationView.setupWithNavController(navController)
     }
 }
