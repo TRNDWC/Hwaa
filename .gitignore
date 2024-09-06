@@ -17,3 +17,12 @@ local.properties
 /.idea
 /features/home/build/
 /features/login/build/
+
+# Ignore .gradle directories and files
+.gradle/
+**/.gradle/
+
+# Ignore build directories
+build/
+**/build/
+
