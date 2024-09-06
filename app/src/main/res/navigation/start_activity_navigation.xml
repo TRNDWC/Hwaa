@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/start_activity_navigation"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/authenticationFragment"
+        android:name="com.example.hwaa.fragment.start.AuthenticationFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_authentication" >
+        <action
+            android:id="@+id/action_authenticationFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languageLevelFragment"
+        android:name="com.example.hwaa.fragment.start.LanguageLevelFragment"
+        android:label="fragment_language_level"
+        tools:layout="@layout/fragment_language_level" >
+        <action
+            android:id="@+id/action_languageLevelFragment_to_timeFragment"
+            app:destination="@id/timeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timeFragment"
+        android:name="com.example.hwaa.fragment.start.TimeFragment"
+        android:label="fragment_time"
+        tools:layout="@layout/fragment_time" />
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.hwaa.fragment.start.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_authenticationFragment"
+            app:destination="@id/authenticationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.example.hwaa.fragment.start.InformationFragment"
+        android:label="fragment_information"
+        tools:layout="@layout/fragment_information" >
+        <action
+            android:id="@+id/action_informationFragment_to_languageLevelFragment"
+            app:destination="@id/languageLevelFragment" />
+    </fragment>
+</navigation>

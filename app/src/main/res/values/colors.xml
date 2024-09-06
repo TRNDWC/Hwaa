@@ -3,6 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="unselect_item_color">#131313</color>
-    <color name="select_item_color">#007AFF</color>
+    <color name="primary_color">#007AFF</color>
     <color name="bottom_item_background">#E5F2FF</color>
+    <color name="e5f2ff">#E5F2FF</color>
+    <color name="f2f2f2">#F2F2F2</color>
 </resources>

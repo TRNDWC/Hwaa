@@ -16,7 +16,7 @@ android {
     compileSdk versions.compileSdk
     defaultConfig {
         resConfigs("en", "vi")
-        applicationId "com.project.demo"
+        applicationId "com.example.hwaa"
         minSdk versions.minSdk
         targetSdk versions.targetSdk
         versionCode versions.versionCode

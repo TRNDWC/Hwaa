@@ -1,4 +1,4 @@
-package com.example.hwaa
+package com.example.hwaa.activity.main
 
 import com.example.hwaa.core.base.BaseViewModel
 

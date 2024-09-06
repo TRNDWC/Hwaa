@@ -1,9 +1,10 @@
-package com.example.hwaa
+package com.example.hwaa.activity.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.hwaa.R
 import com.example.hwaa.core.base.BaseActivity
 import com.example.hwaa.databinding.ActivityMainBinding
 import com.example.hwaa.navigation.AppNavigation
@@ -27,5 +28,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         val navController = navHostFragment.navController
         appNavigation.bind(navController)
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.start_main_enter, R.anim.start_main_exit)
     }
 }

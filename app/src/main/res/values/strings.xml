@@ -2,4 +2,9 @@
     <string name="app_name">Hwaa</string>
     <string name="not_connected_internet">Internet is not connected</string>
     <string name="fab">dictionary fab\n</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start_image">start_image</string>
+    <string name="lesson_image">lesson image\n</string>
+    <string name="bookmark">bookmark image\n</string>
 </resources>
