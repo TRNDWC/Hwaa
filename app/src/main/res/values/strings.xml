@@ -7,4 +7,8 @@
     <string name="start_image">start_image</string>
     <string name="lesson_image">lesson image\n</string>
     <string name="bookmark">bookmark image\n</string>
+    <string name="avatar">image for avatar\n</string>
+    <string name="streak">image of streak\n</string>
+    <string name="notification">image of notification\n</string>
+    <string name="rate">image of rate\n</string>
 </resources>
