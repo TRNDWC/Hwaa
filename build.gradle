@@ -7,10 +7,17 @@ buildscript {
     apply from: rootProject.file('dependencies.gradle')
     dependencies {
         classpath libs.gradle
-        classpath libraries.kotlinGradle
-        classpath libraries.hiltGradle
+        classpath libs.kotlinGradlePlugin
+        classpath libs.hiltGradlePlugin
     }
 }
+
+configurations.configureEach {
+    resolutionStrategy {
+        force 'com.android.support:support-v4:27.1.0'
+    }
+}
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

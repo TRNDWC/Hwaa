@@ -7,11 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hwaa.R
+import com.example.hwaa.viewmodel.VocabularyViewModel
 
 class VocabularyFragment : Fragment() {
 
     companion object {
-        fun newInstance() = VocabularyFragment()
+        fun newInstance(key: String, color: String): Fragment {
+            val fragment = VocabularyFragment()
+            val argument = Bundle()
+            fragment.arguments = argument
+            return fragment
+        }
     }
 
     private val viewModel: VocabularyViewModel by viewModels()

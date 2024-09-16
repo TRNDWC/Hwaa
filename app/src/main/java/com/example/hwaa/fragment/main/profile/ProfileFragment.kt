@@ -7,11 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hwaa.R
+import com.example.hwaa.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ProfileFragment()
+        fun newInstance(key: String, color: String): Fragment {
+            val fragment = ProfileFragment()
+            val argument = Bundle()
+            fragment.arguments = argument
+            return fragment
+        }
     }
 
     private val viewModel: ProfileViewModel by viewModels()
