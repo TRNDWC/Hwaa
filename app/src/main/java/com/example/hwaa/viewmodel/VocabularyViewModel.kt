@@ -1,4 +1,4 @@
-package com.example.hwaa.fragment.main.vocabulary
+package com.example.hwaa.viewmodel
 
 import androidx.lifecycle.ViewModel
 

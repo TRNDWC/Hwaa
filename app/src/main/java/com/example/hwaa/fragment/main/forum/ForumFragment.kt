@@ -7,11 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hwaa.R
+import com.example.hwaa.viewmodel.ForumViewModel
 
 class ForumFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ForumFragment()
+        fun newInstance(key: String, color: String): Fragment {
+            val fragment = ForumFragment()
+            val argument = Bundle()
+            fragment.arguments = argument
+            return fragment
+        }
     }
 
     private val viewModel: ForumViewModel by viewModels()

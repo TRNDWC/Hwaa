@@ -1,4 +1,4 @@
-package com.example.hwaa.fragment.main.forum
+package com.example.hwaa.viewmodel
 
 import androidx.lifecycle.ViewModel
 
