@@ -1,4 +1,4 @@
-package com.example.hwaa.navigation
+package com.example.hwaa.navigation.book
 
 import android.os.Bundle
 import com.example.hwaa.R
@@ -7,8 +7,7 @@ import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
 @ActivityScoped
-class AppNavigatorImpl @Inject constructor() : BaseNavigatorImpl(),
-    AppNavigation {
+class BookNavigationImpl @Inject constructor() : BaseNavigatorImpl(), BookNavigation {
     override fun fromBookToLesson(bundle: Bundle?) {
         openScreen(R.id.action_lessonListFragment_to_lessonFragment, bundle)
     }

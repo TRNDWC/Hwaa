@@ -5,4 +5,6 @@
     <dimen name="lesson_item_text_size">18sp</dimen>
     <dimen name="btn_bookmark_size">48dp</dimen>
     <dimen name="avatar_size">48dp</dimen>
+    <dimen name="hwaa_toolbar_height">93dp</dimen>
+    <dimen name="bottom_app_bar_height">65dp</dimen>
 </resources>

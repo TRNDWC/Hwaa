@@ -5,7 +5,6 @@ package com.example.hwaa.fragment.main.book
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.hwaa.R
@@ -17,17 +16,17 @@ enum class BookType {
 }
 
 
-interface BookItemCallback {
+interface LessonsCallback {
     fun onItemClicked(position: Int)
     fun onBookmarkClicked(position: Int, view: View)
 }
 
-class BookAdapter (val callback: BookItemCallback) : RecyclerView.Adapter<ViewHolder>() {
+class LessonsAdapter (val callback: LessonsCallback) : RecyclerView.Adapter<ViewHolder>() {
 
     inner class LessonViewHolder(itemView: View) : ViewHolder(itemView) {
         val binding = ItemLessonBinding.bind(itemView)
         init {
-            binding.root.setOnClickListener {
+            binding.clLesson.setOnClickListener {
                 callback.onItemClicked(adapterPosition)
             }
             binding.ibBookmark.setOnClickListener {
@@ -74,7 +73,6 @@ class BookAdapter (val callback: BookItemCallback) : RecyclerView.Adapter<ViewHo
     }
 
     private fun createBookList(): List<BookType> {
-//        moi 5 bai se co 1 header
         val list = mutableListOf<BookType>()
         for (i in 0 until 100) {
             if (i % 7 == 0) {

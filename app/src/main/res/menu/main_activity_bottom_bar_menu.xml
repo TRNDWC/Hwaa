@@ -6,12 +6,12 @@
     <item
         android:id="@+id/bookFragment"
         android:icon="@drawable/ic_lesson"
-        android:title="." />
+        android:title="Lesson" />
 
     <item
         android:id="@+id/vocabularyFragment"
         android:icon="@drawable/ic_vocabulary"
-        android:title="." />
+        android:title="Revision" />
 
     <item
         android:id="@+id/placeholder"
@@ -21,12 +21,12 @@
     <item
         android:id="@+id/forumFragment"
         android:icon="@drawable/ic_forum"
-        android:title="." />
+        android:title="Forum" />
 
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
-        android:title="." />
+        android:title="Profile" />
 
 
 </menu>

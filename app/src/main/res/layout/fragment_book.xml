@@ -8,16 +8,13 @@
         android:background="@android:color/transparent"
         tools:context=".fragment.main.book.BookFragment">
 
-        <com.example.hwaa.util.ui.CustomRecyclerView
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/bookNavHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rv_book"
-            android:clipToPadding="false"
-            android:background="@android:color/transparent"
-            android:scrollbars="none"
-            android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_lesson" />
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/book_navigation" />
 
     </FrameLayout>
 

@@ -1,6 +1,5 @@
-package com.example.hwaa.fragment.main.book
+package com.example.hwaa.viewmodel
 
-import androidx.lifecycle.ViewModel
 import com.example.hwaa.core.base.BaseViewModel
 
 class BookViewModel : BaseViewModel() {
