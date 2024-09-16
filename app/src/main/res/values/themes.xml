@@ -1,5 +1,8 @@
-<resources xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
-        <style name="Base.Theme.Hwaa" parent="Theme.MaterialComponents.NoActionBar">
-        </style>
-        <style name="Theme.Hwaa" parent="Base.Theme.Hwaa" />
+<resources xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Hwaa" parent="Theme.MaterialComponents.NoActionBar">
+
+    </style>
+
+    <style name="Theme.Hwaa" parent="Base.Theme.Hwaa" />
 </resources>
