@@ -3,26 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_activity_navigation"
-    app:startDestination="@id/bookFragment">
+    app:startDestination="@+id/bookFragment">
 
     <fragment
         android:id="@+id/bookFragment"
         android:name="com.example.hwaa.fragment.main.book.BookFragment"
-        android:label="fragment_book"
-        tools:layout="@layout/fragment_book" />
+        android:label=""
+        tools:layout="@layout/fragment_container" >
+        <argument
+            android:name="color"
+            app:argType="string"
+            android:defaultValue="#FF0000" />
+    </fragment>
+
     <fragment
         android:id="@+id/vocabularyFragment"
         android:name="com.example.hwaa.fragment.main.vocabulary.VocabularyFragment"
-        android:label="fragment_vocabulary"
-        tools:layout="@layout/fragment_vocabulary" />
+        android:label=""
+        tools:layout="@layout/fragment_container" >
+
+        <argument
+            android:name="color"
+            app:argType="string"
+            android:defaultValue="#00FF00" />
+
+    </fragment>
+
     <fragment
         android:id="@+id/forumFragment"
         android:name="com.example.hwaa.fragment.main.forum.ForumFragment"
-        android:label="fragment_forum"
-        tools:layout="@layout/fragment_forum" />
+        android:label=""
+        tools:layout="@layout/fragment_container" >
+
+        <argument
+            android:name="color"
+            app:argType="string"
+            android:defaultValue="#0000FF" />
+
+    </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.hwaa.fragment.main.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:label=""
+        tools:layout="@layout/fragment_container" >
+
+        <argument
+            android:name="color"
+            app:argType="string"
+            android:defaultValue="#FF00FF" />
+
+    </fragment>
+
 </navigation>

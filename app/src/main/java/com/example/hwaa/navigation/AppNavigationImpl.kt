@@ -9,19 +9,7 @@ import javax.inject.Inject
 @ActivityScoped
 class AppNavigatorImpl @Inject constructor() : BaseNavigatorImpl(),
     AppNavigation {
-    override fun navigateToBook(bundle: Bundle?) {
-//        openScreen(R.id.action_homeFragment_to_bookFragment, bundle)
-    }
-
-    override fun navigateToVocabulary(bundle: Bundle?) {
-//        openScreen(R.id.action_homeFragment_to_vocabularyFragment, bundle)
-    }
-
-    override fun navigateToProfile(bundle: Bundle?) {
-//        openScreen(R.id.action_homeFragment_to_profileFragment, bundle)
-    }
-
-    override fun navigateToForum(bundle: Bundle?) {
-//        openScreen(R.id.action_homeFragment_to_forumFragment, bundle)
+    override fun fromBookToLesson(bundle: Bundle?) {
+        openScreen(R.id.action_lessonListFragment_to_lessonFragment, bundle)
     }
 }
