@@ -5,6 +5,8 @@ import com.example.hwaa.navigation.AppNavigation
 import com.example.hwaa.navigation.AppNavigatorImpl
 import com.example.hwaa.navigation.book.BookNavigation
 import com.example.hwaa.navigation.book.BookNavigationImpl
+import com.example.hwaa.navigation.forum.ForumNavigation
+import com.example.hwaa.navigation.forum.ForumNavigationImpl
 import com.example.hwaa.navigation.start.StartNavigation
 import com.example.hwaa.navigation.start.StartNavigationImpl
 import dagger.Binds
@@ -41,4 +43,12 @@ abstract class NavigationModule {
     @Binds
     @ActivityScoped
     abstract fun provideBookNavigation(navigation: BookNavigationImpl): BookNavigation
+
+    @Binds
+    @ActivityScoped
+    abstract fun provideBaseNavigationForum(navigation: ForumNavigationImpl): BaseNavigator
+
+    @Binds
+    @ActivityScoped
+    abstract fun provideForumNavigation(navigation: ForumNavigationImpl): ForumNavigation
 }
