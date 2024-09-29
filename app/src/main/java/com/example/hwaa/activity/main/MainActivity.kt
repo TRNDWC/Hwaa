@@ -1,6 +1,7 @@
 package com.example.hwaa.activity.main
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.hwaa.R
@@ -8,6 +9,7 @@ import com.example.hwaa.core.base.BaseActivity
 import com.example.hwaa.databinding.ActivityMainBinding
 import com.example.hwaa.navigation.AppNavigation
 import com.example.hwaa.navigation.book.BookNavigation
+import com.example.hwaa.navigation.forum.ForumNavigation
 import com.example.hwaa.util.ui.HwaaToolBarCallBack
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationBarView
@@ -23,6 +25,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
 
     @Inject
     lateinit var bookNavigation: BookNavigation
+
+    @Inject
+    lateinit var forumNavigation: ForumNavigation
 
     private val viewModel: MainViewModel by viewModels()
     override fun getVM() = viewModel
@@ -65,6 +70,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         binding.fab.setOnClickListener {
             Toast.makeText(this, "Floating Action Button Clicked", Toast.LENGTH_SHORT).show()
         }
+        binding.toolbar.callBack = this
     }
 
     private fun setUpViewPagerAdapter() {
@@ -73,17 +79,56 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         binding.viewPager.isUserInputEnabled = false
     }
 
+    fun setToolbarLesson() {
+        showAppBar()
+        setAppBarHideOnScroll(false)
+        binding.toolbar.inflateToolBarLayout(
+            R.layout.tb_lesson_fragment,
+            binding.collapsingToolbarLayout
+        )
+        setAppBarHideOnScroll(false)
+    }
+
+    fun setToolbarForum() {
+        setAppBarHideOnScroll(true)
+        showAppBar()
+        binding.toolbar.inflateToolBarLayout(
+            R.layout.tb_forum_fragment,
+            binding.collapsingToolbarLayout
+        )
+        setAppBarHideOnScroll(true)
+    }
+
+    fun setToolbarLessons() {
+        setAppBarHideOnScroll(true)
+        showAppBar()
+        binding.toolbar.inflateToolBarLayout(
+            R.layout.tb_book_fragment,
+            binding.collapsingToolbarLayout
+        )
+    }
+
+    fun setToolbarDetailPost() {
+        setAppBarHideOnScroll(false)
+        showAppBar()
+        binding.toolbar.inflateToolBarLayout(
+            R.layout.tb_detail_post_fragment,
+            binding.collapsingToolbarLayout
+        )
+    }
+
+
     fun showAppBar() {
         binding.appBarLayout.setExpanded(true, true)
-        binding.bottomAppBar.performShow(true)
+        binding.bottomAppBar.performShow()
     }
 
     fun hideAppBar() {
         binding.appBarLayout.setExpanded(false, true)
-        binding.bottomAppBar.performHide(true)
+        binding.bottomAppBar.performHide()
     }
 
-    fun setAppBarHideOnScroll(isHideAble: Boolean) {
+    private fun setAppBarHideOnScroll(isHideAble: Boolean) {
         if (isHideAble) {
             val appBarLayout = binding.appBarLayout
             val params = appBarLayout.getChildAt(0).layoutParams as AppBarLayout.LayoutParams
@@ -109,7 +154,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         overridePendingTransition(R.anim.start_main_enter, R.anim.start_main_exit)
     }
 
-    override fun backIconClickListener() {
+    override fun backBookClickListener() {
         bookNavigation.navigateUp()
+    }
+
+    override fun backPostClickListener() {
+        forumNavigation.navigateUp()
     }
 }
