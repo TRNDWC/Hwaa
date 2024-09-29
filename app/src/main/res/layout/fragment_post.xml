@@ -5,18 +5,15 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.main.book.LessonsFragment">
+        tools:context=".fragment.main.forum.PostFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_book"
+        <com.example.hwaa.util.ui.CustomRecyclerView
+            android:id="@+id/rv_post"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
             android:scrollbars="none"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_lesson" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </FrameLayout>
 </layout>

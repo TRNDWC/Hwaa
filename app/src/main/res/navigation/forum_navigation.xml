@@ -3,12 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/forum_navigation"
-    app:startDestination="@id/forumFragment">
+    app:startDestination="@id/postFragment">
+
 
     <fragment
-        android:id="@+id/forumFragment"
-        android:name="com.example.hwaa.fragment.main.forum.ForumFragment"
-        android:label="fragment_forum"
-        tools:layout="@layout/fragment_forum" />
+        android:id="@+id/postFragment"
+        android:name="com.example.hwaa.fragment.main.forum.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_postFragment_to_postDetailFragment"
+            app:destination="@id/postDetailFragment" />
+        <action
+            android:id="@+id/action_postFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment"
+            app:enterAnim="@anim/start_main_enter"
+            app:exitAnim="@anim/start_main_exit"
+            app:popEnterAnim="@anim/start_main_enter"
+            app:popExitAnim="@anim/start_main_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/postDetailFragment"
+        android:name="com.example.hwaa.fragment.main.forum.PostDetailFragment"
+        android:label="fragment_post_detail"
+        tools:layout="@layout/fragment_post_detail" />
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.example.hwaa.fragment.main.forum.CreatePostFragment"
+        android:label="CreatePostFragment" />
 
 </navigation>

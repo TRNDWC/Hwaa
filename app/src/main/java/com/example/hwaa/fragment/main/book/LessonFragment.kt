@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.airbnb.lottie.LottieAnimationView
 import com.example.hwaa.R
@@ -36,12 +37,6 @@ class LessonFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        (requireActivity() as MainActivity).getBinding().toolbar.getBinding().apply {
-            clMain.visibility = View.GONE
-            clLesson.visibility = View.VISIBLE
-        }
-
         val animationView
                 : LottieAnimationView = binding.animationView
         animationView
@@ -70,13 +65,10 @@ class LessonFragment :
         val displayMetrics = DisplayMetrics()
         activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
         val height = displayMetrics.heightPixels
-        val toolBarHeight =
-            requireActivity().resources.getDimension(R.dimen.hwaa_toolbar_height).toInt()
-        val bottomBarHeight =
-            requireActivity().resources.getDimension(R.dimen.bottom_app_bar_height).toInt()
+        val toolBarHeight = activity.getBinding().appBarLayout.height
+        val bottomBarHeight = activity.getBinding().bottomAppBar.height
 
         binding.fragmentLesson.layoutParams.height = height - toolBarHeight - bottomBarHeight
-        binding.fragmentQuestion.layoutParams.height = height - toolBarHeight - bottomBarHeight
 
         val manager = CardStackLayoutManager(requireContext(), object : CardStackListener {
             override fun onCardDragging(direction: Direction?, ratio: Float) {
@@ -119,6 +111,7 @@ class LessonFragment :
 
     override fun onResume() {
         super.onResume()
+        activity.setToolbarLesson()
     }
 
     @SuppressLint("ClickableViewAccessibility")
