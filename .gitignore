@@ -26,3 +26,13 @@ local.properties
 build/
 **/build/
 
+# Ignore Android Studio/IntelliJ project files
+.idea/
+
+# Or, if you only want to ignore specific .xml files in the .idea directory:
+.idea/*.xml
+.idea/workspace.xml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/modules.xml
+
