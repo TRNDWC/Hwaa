@@ -37,10 +37,10 @@ class LessonFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as MainActivity).getBinding().toolbar.getBinding().apply {
-            clMain.visibility = View.GONE
-            clLesson.visibility = View.VISIBLE
-        }
+//        (requireActivity() as MainActivity).getBinding().toolbar.getBinding().apply {
+//            clMain.visibility = View.GONE
+//            clLesson.visibility = View.VISIBLE
+//        }
 
         val animationView
                 : LottieAnimationView = binding.animationView

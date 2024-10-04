@@ -7,6 +7,8 @@ import com.example.hwaa.navigation.book.BookNavigation
 import com.example.hwaa.navigation.book.BookNavigationImpl
 import com.example.hwaa.navigation.start.StartNavigation
 import com.example.hwaa.navigation.start.StartNavigationImpl
+import com.example.hwaa.navigation.vocabulary.VocabularyNavigation
+import com.example.hwaa.navigation.vocabulary.VocabularyNavigationImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -41,4 +43,12 @@ abstract class NavigationModule {
     @Binds
     @ActivityScoped
     abstract fun provideBookNavigation(navigation: BookNavigationImpl): BookNavigation
+
+    @Binds
+    @ActivityScoped
+    abstract fun provideBaseNavigationVocabulary(navigation: VocabularyNavigationImpl): BaseNavigator
+
+    @Binds
+    @ActivityScoped
+    abstract fun provideVocabularyNavigation(navigation: VocabularyNavigationImpl): VocabularyNavigation
 }

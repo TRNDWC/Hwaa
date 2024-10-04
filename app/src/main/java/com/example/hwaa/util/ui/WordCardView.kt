@@ -25,7 +25,6 @@ class WordCardView @JvmOverloads constructor(
     }
 
     private var isFront = true
-
     fun flipCard() {
         val setOut =
             AnimatorInflater.loadAnimator(context, R.animator.card_flip_out) as AnimatorSet
