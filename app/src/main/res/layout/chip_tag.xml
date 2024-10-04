@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_selected_tag"
+        android:paddingHorizontal="4dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="65dp"
+            android:textAlignment="center"
+            android:textColor="@color/primary_color"
+            android:textSize="12sp"
+            app:chipBackgroundColor="@color/white"
+            app:chipCornerRadius="90dp"
+            app:chipIcon="@drawable/ic_tag"
+            app:chipIconSize="12dp"
+            app:chipIconTint="@color/primary_color"
+            app:chipStrokeColor="@color/primary_color"
+            app:chipStrokeWidth="1dp" />
+
+    </FrameLayout>
+
+</layout>

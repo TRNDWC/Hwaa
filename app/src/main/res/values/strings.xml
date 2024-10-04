@@ -13,7 +13,7 @@
     <string name="rate">image of rate\n</string>
     <string name="pronunciation">image for pronunciation\n</string>
     <string name="stroke_order">image for stroke order</string>
-    <string name="back">back</string>
+    <string name="back">BACK</string>
     <string name="more">ic_more\n</string>
     <string name="iv_content">content of question</string>
     <string name="comment">comment</string>
@@ -21,4 +21,7 @@
     <string name="forum">HWAA</string>
     <string name="what_s_on_your_mind">what\'s on your mind?</string>
     <string name="post">POST</string>
+    <string name="quick_revise">quick_review_button</string>
+    <string name="number_of_cards">NUMBER OF CARDS</string>
+    <string name="start">start</string>
 </resources>
