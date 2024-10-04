@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.main.vocabulary.VocabularyFragment"
-    android:background="@android:color/holo_red_dark">
-
-    <TextView
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hi" />
+        android:background="@android:color/transparent"
+        tools:context=".fragment.main.book.BookFragment">
 
-</FrameLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/vocabularyNavHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/vocabulary_navigation" />
+    </FrameLayout>
+</layout>

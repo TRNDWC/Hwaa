@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/vocabulary_navigation"
-    app:startDestination="@id/vocabularyFragment">
-
+    app:startDestination="@id/vocabListFragment">
     <fragment
-        android:id="@+id/vocabularyFragment"
-        android:name="com.example.hwaa.fragment.main.vocabulary.VocabularyFragment"
-        android:label="fragment_vocabulary"
-        tools:layout="@layout/fragment_vocabulary" />
-
+        android:id="@+id/vocabListFragment"
+        android:name="com.example.hwaa.fragment.main.vocabulary.VocabListFragment"
+        android:label="fragment_vocab_list"
+        tools:layout="@layout/fragment_vocab_list" >
+        <action
+            android:id="@+id/action_vocabListFragment_to_flashCardFragment"
+            app:destination="@id/flashCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flashCardFragment"
+        android:name="com.example.hwaa.fragment.main.vocabulary.FlashCardFragment"
+        android:label="FlashCardFragment" />
 </navigation>
 
