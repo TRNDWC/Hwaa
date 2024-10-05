@@ -1,7 +1,8 @@
 package com.example.hwaa.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.hwaa.core.base.BaseViewModel
 
-class ForumViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class ForumViewModel : BaseViewModel() {
+
 }

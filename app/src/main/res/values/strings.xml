@@ -11,9 +11,14 @@
     <string name="streak">image of streak\n</string>
     <string name="notification">image of notification\n</string>
     <string name="rate">image of rate\n</string>
-    <string name="pronunciation">image for pronounciation\n</string>
+    <string name="pronunciation">image for pronunciation\n</string>
     <string name="stroke_order">image for stroke order</string>
-    <string name="back">ic_back\n</string>
+    <string name="back">back</string>
     <string name="more">ic_more\n</string>
-    <string name="iv_content">content of question\n</string>
+    <string name="iv_content">content of question</string>
+    <string name="comment">comment</string>
+    <string name="like">like</string>
+    <string name="forum">HWAA</string>
+    <string name="what_s_on_your_mind">what\'s on your mind?</string>
+    <string name="post">POST</string>
 </resources>
