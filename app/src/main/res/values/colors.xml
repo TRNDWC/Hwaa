@@ -7,5 +7,9 @@
     <color name="bottom_item_background">#E5F2FF</color>
     <color name="e5f2ff">#E5F2FF</color>
     <color name="f2f2f2">#F2F2F2</color>
+    <color name="transparent">#00000000</color>
     <color name="f8f8f8">#F8F8F8</color>
+    <color name="seek_bar_background">#ababab</color>
+    <color name="seek_bar_progress">#ffb600</color>
+    <color name="seek_bar_secondary_progress">#3399CC</color>
 </resources>

@@ -9,6 +9,8 @@ import com.example.hwaa.navigation.forum.ForumNavigation
 import com.example.hwaa.navigation.forum.ForumNavigationImpl
 import com.example.hwaa.navigation.start.StartNavigation
 import com.example.hwaa.navigation.start.StartNavigationImpl
+import com.example.hwaa.navigation.vocabulary.VocabularyNavigation
+import com.example.hwaa.navigation.vocabulary.VocabularyNavigationImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -51,4 +53,12 @@ abstract class NavigationModule {
     @Binds
     @ActivityScoped
     abstract fun provideForumNavigation(navigation: ForumNavigationImpl): ForumNavigation
+
+    @Binds
+    @ActivityScoped
+    abstract fun provideBaseNavigationVocabulary(navigation: VocabularyNavigationImpl): BaseNavigator
+
+    @Binds
+    @ActivityScoped
+    abstract fun provideVocabularyNavigation(navigation: VocabularyNavigationImpl): VocabularyNavigation
 }

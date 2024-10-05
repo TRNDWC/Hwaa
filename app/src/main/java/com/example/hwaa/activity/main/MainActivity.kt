@@ -11,6 +11,7 @@ import com.example.hwaa.navigation.AppNavigation
 import com.example.hwaa.navigation.book.BookNavigation
 import com.example.hwaa.navigation.forum.ForumNavigation
 import com.example.hwaa.util.ui.HwaaToolBarCallBack
+import com.example.hwaa.util.ui.TagType
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
@@ -117,6 +118,24 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         )
     }
 
+
+    fun setToolbarVocab() {
+        setAppBarHideOnScroll(true)
+        showAppBar()
+        binding.toolbar.inflateToolBarLayout(
+            R.layout.tb_vocab_fragment,
+            binding.collapsingToolbarLayout
+        )
+    }
+
+    fun setToolbarFlashCard() {
+        setAppBarHideOnScroll(false)
+        showAppBar()
+        binding.toolbar.inflateToolBarLayout(
+            R.layout.tb_flash_card,
+            binding.collapsingToolbarLayout
+        )
+    }
 
     fun showAppBar() {
         binding.appBarLayout.setExpanded(true, true)
