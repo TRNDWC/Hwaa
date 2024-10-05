@@ -75,7 +75,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
     }
 
     fun setToolbarProfile() {
-        hideAppBar()
+        showAppBar()
         setAppBarHideOnScroll(true)
         binding.toolbar.inflateToolBarLayout(
             collapsingToolbarLayout = binding.collapsingToolbarLayout
@@ -189,7 +189,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
     override fun backPostClickListener() {
         forumNavigation.navigateUp()
     }
-//    override fun backIconClickListener() {
-//        bookNavigation.navigateUp()
-//    }
+
+    override fun backIconClickListener() {
+        bookNavigation.navigateUp()
+    }
 }
