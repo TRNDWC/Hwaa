@@ -74,6 +74,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         binding.toolbar.callBack = this
     }
 
+    fun setToolbarProfile() {
+        hideAppBar()
+        setAppBarHideOnScroll(true)
+        binding.toolbar.inflateToolBarLayout(
+            collapsingToolbarLayout = binding.collapsingToolbarLayout
+        )
+    }
+
     private fun setUpViewPagerAdapter() {
         binding.viewPager.adapter = MainViewPagerAdapter(this)
         binding.viewPager.setOffscreenPageLimit(4)
@@ -142,9 +150,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         binding.bottomAppBar.performShow()
     }
 
-    fun hideAppBar() {
+    private fun hideAppBar() {
         binding.appBarLayout.setExpanded(false, true)
         binding.bottomAppBar.performHide()
+//        binding.bottomAppBar.performHide(true)
     }
 
     private fun setAppBarHideOnScroll(isHideAble: Boolean) {
@@ -180,4 +189,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
     override fun backPostClickListener() {
         forumNavigation.navigateUp()
     }
+//    override fun backIconClickListener() {
+//        bookNavigation.navigateUp()
+//    }
 }

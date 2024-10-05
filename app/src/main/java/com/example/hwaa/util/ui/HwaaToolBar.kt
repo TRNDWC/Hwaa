@@ -3,7 +3,6 @@ package com.example.hwaa.util.ui
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
 import com.example.hwaa.R
@@ -37,7 +36,8 @@ class HwaaToolBar @JvmOverloads constructor(
     var callBack: HwaaToolBarCallBack? = null
     var tagClickListener: TagClickListener? = null
 
-    fun inflateToolBarLayout(layoutId: Int, collapsingToolbarLayout: CollapsingToolbarLayout) {
+    fun inflateToolBarLayout(layoutId: Int? = null
+                             , collapsingToolbarLayout: CollapsingToolbarLayout) {
         removeAllViews()
         binding = when (layoutId) {
 //            R.layout.tb_lesson_fragment -> {
@@ -67,7 +67,6 @@ class HwaaToolBar @JvmOverloads constructor(
 //                setListenerForDetailPost(binding)
 //                binding
 //            }
-
             R.layout.tb_vocab_fragment -> {
                 val binding =
                     TbVocabFragmentBinding.inflate(LayoutInflater.from(context), this, true)
