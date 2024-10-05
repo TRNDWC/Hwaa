@@ -67,6 +67,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         }
     }
 
+    fun setToolbarProfile() {
+        hideAppBar()
+        setAppBarHideOnScroll(true)
+        binding.toolbar.inflateToolBarLayout(
+            collapsingToolbarLayout = binding.collapsingToolbarLayout
+        )
+    }
+
     private fun setUpViewPagerAdapter() {
         binding.viewPager.adapter = MainViewPagerAdapter(this)
         binding.viewPager.setOffscreenPageLimit(4)
@@ -78,12 +86,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         binding.bottomAppBar.performShow(true)
     }
 
-    fun hideAppBar() {
+    private fun hideAppBar() {
         binding.appBarLayout.setExpanded(false, true)
-        binding.bottomAppBar.performHide(true)
+//        binding.bottomAppBar.performHide(true)
     }
 
-    fun setAppBarHideOnScroll(isHideAble: Boolean) {
+    private fun setAppBarHideOnScroll(isHideAble: Boolean) {
         if (isHideAble) {
             val appBarLayout = binding.appBarLayout
             val params = appBarLayout.getChildAt(0).layoutParams as AppBarLayout.LayoutParams
@@ -109,7 +117,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         overridePendingTransition(R.anim.start_main_enter, R.anim.start_main_exit)
     }
 
-    override fun backIconClickListener() {
-        bookNavigation.navigateUp()
-    }
+//    override fun backIconClickListener() {
+//        bookNavigation.navigateUp()
+//    }
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Rating"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/tvComment"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="@color/f8f8f8"
+                android:drawablePadding="8dp"
+                android:paddingTop="12dp"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:drawableTopCompat="@drawable/ic_comment_profile" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="68dp"
+                android:background="@color/f8f8f8" />
+
+            <TextView
+                android:id="@+id/tvLike"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="@color/f8f8f8"
+                android:drawablePadding="8dp"
+                android:paddingTop="12dp"
+                android:text="Day Left"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="italic"
+
+                app:drawableTopCompat="@drawable/ic_like_profile" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="68dp"
+                android:background="@color/f8f8f8" />
+
+            <TextView
+                android:id="@+id/tvFollow"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="@color/f8f8f8"
+                android:drawablePadding="8dp"
+                android:paddingTop="12dp"
+                android:text="Follow"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:drawableTopCompat="@drawable/ic_follow_profile" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

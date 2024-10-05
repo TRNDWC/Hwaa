@@ -32,12 +32,12 @@ class LessonsFragment :
         binding.rvBook.adapter = adapter
         binding.rvBook.layoutManager = LinearLayoutManager(context)
 
-        (requireActivity() as MainActivity).getBinding().toolbar.getBinding().apply {
-            clLesson.visibility = View.GONE
-            clMain.visibility = View.VISIBLE
-        }
-
-        (requireActivity() as MainActivity).getBinding().toolbar.backIconClickListener = (requireActivity() as MainActivity)
+//        (requireActivity() as MainActivity).getBinding().toolbar.getBinding().apply {
+//            clLesson.visibility = View.GONE
+//            clMain.visibility = View.VISIBLE
+//        }
+//
+//        (requireActivity() as MainActivity).getBinding().toolbar.backIconClickListener = (requireActivity() as MainActivity)
     }
 
     override fun onItemClicked(position: Int) {
@@ -47,7 +47,7 @@ class LessonsFragment :
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).setAppBarHideOnScroll(true)
+//        (activity as MainActivity).setAppBarHideOnScroll(true)
     }
 
     override fun onBookmarkClicked(position: Int, view: View) {
