@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hwaa.R
 import com.example.hwaa.core.base.BaseFragment
 import com.example.hwaa.databinding.FragmentVocabListBinding
@@ -51,7 +53,7 @@ class VocabListFragment :
         (activity as com.example.hwaa.activity.main.MainActivity).getBinding().toolbar.tagClickListener =
             this
         binding.rvVocabs.adapter = adapter
-        binding.rvVocabs.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+        binding.rvVocabs.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.rvVocabs.edgeEffectFactory = BounceEdgeEffectFactory()
     }
 

@@ -3,11 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile_navigation"
-    app:startDestination="@id/profileFragment">
-
+    app:startDestination="@id/profileDetailedFragment">
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.hwaa.fragment.main.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/profileDetailedFragment"
+        android:name="com.example.hwaa.fragment.main.profile.ProfileDetailedFragment"
+        android:label="fragment_profile_detailed"
+        tools:layout="@layout/fragment_profile_detailed" >
+        <action
+            android:id="@+id/action_profileDetailedFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.hwaa.fragment.main.profile.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

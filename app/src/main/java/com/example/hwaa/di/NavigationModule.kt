@@ -7,6 +7,8 @@ import com.example.hwaa.navigation.book.BookNavigation
 import com.example.hwaa.navigation.book.BookNavigationImpl
 import com.example.hwaa.navigation.forum.ForumNavigation
 import com.example.hwaa.navigation.forum.ForumNavigationImpl
+import com.example.hwaa.navigation.profile.ProfileNavigation
+import com.example.hwaa.navigation.profile.ProfileNavigationImpl
 import com.example.hwaa.navigation.start.StartNavigation
 import com.example.hwaa.navigation.start.StartNavigationImpl
 import com.example.hwaa.navigation.vocabulary.VocabularyNavigation
@@ -61,4 +63,13 @@ abstract class NavigationModule {
     @Binds
     @ActivityScoped
     abstract fun provideVocabularyNavigation(navigation: VocabularyNavigationImpl): VocabularyNavigation
+
+
+    @Binds
+    @ActivityScoped
+    abstract fun provideBaseNavigationProfile(navigation: ProfileNavigationImpl): BaseNavigator
+
+    @Binds
+    @ActivityScoped
+    abstract fun provideProfileNavigation(navigation: ProfileNavigationImpl): ProfileNavigation
 }
