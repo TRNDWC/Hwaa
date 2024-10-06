@@ -1,8 +1,6 @@
 package com.example.hwaa.activity.main
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.hwaa.R
 import com.example.hwaa.core.base.BaseActivity
@@ -11,7 +9,6 @@ import com.example.hwaa.navigation.AppNavigation
 import com.example.hwaa.navigation.book.BookNavigation
 import com.example.hwaa.navigation.forum.ForumNavigation
 import com.example.hwaa.util.ui.HwaaToolBarCallBack
-import com.example.hwaa.util.ui.TagType
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
@@ -69,7 +66,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         }
         setUpViewPagerAdapter()
         binding.fab.setOnClickListener {
-            Toast.makeText(this, "Floating Action Button Clicked", Toast.LENGTH_SHORT).show()
+            appNavigation.showDictionary(supportFragmentManager)
         }
         binding.toolbar.callBack = this
     }

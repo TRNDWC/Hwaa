@@ -6,25 +6,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.DialogFragment
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-abstract class BaseDialogFragmentNotViewModel<BD : ViewDataBinding>(@LayoutRes id: Int) :
-    DialogFragment(id) {
+abstract class BaseBottomSheetDialogFragmentNotViewModel<BD : ViewDataBinding> : BottomSheetDialogFragment() {
 
     private var _binding: BD? = null
     protected val binding: BD
         get() = _binding
             ?: throw IllegalStateException("Cannot access view after view destroyed or before view creation")
 
+    // Abstract method to be implemented by child classes
+    @LayoutRes
+    abstract fun getLayoutId(): Int
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DataBindingUtil.inflate(inflater, id, container, false)
+        // Inflate using DataBindingUtil
+        _binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         _binding?.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -39,11 +44,8 @@ abstract class BaseDialogFragmentNotViewModel<BD : ViewDataBinding>(@LayoutRes i
 
         if (savedInstanceState == null) {
             initView(null)
-
             setOnClick()
-
             bindingStateView()
-
             bindingAction()
         }
     }
@@ -52,35 +54,23 @@ abstract class BaseDialogFragmentNotViewModel<BD : ViewDataBinding>(@LayoutRes i
         super.onViewStateRestored(savedInstanceState)
         if (savedInstanceState != null) {
             initView(savedInstanceState)
-
             setOnClick()
-
             bindingStateView()
-
             bindingAction()
         }
     }
 
-    open fun setOnClick() {
+    open fun setOnClick() {}
 
-    }
+    open fun initView(savedInstanceState: Bundle?) {}
 
-    open fun initView(savedInstanceState: Bundle?) {
+    open fun bindingStateView() {}
 
-    }
-
-    open fun bindingStateView() {
-
-    }
-
-    open fun bindingAction() {
-
-    }
+    open fun bindingAction() {}
 
     override fun onDestroyView() {
         _binding?.unbind()
         _binding = null
         super.onDestroyView()
     }
-
 }
