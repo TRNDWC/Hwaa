@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.hwaa.R
 import com.example.hwaa.databinding.DialogStartReviseBinding
+import com.example.hwaa.navigation.vocabulary.VocabularyNavigation
 
-class CardSettingDialog : DialogFragment() {
+class CardSettingDialog(var navigation: VocabularyNavigation) : DialogFragment() {
 
     private val binding by lazy {
         DialogStartReviseBinding.inflate(layoutInflater)
@@ -26,6 +27,7 @@ class CardSettingDialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnStart.setOnClickListener {
+            navigation.fromVocabularyToFlashCard()
             dismiss()
         }
     }

@@ -2,34 +2,40 @@ package com.example.hwaa.fragment.main.forum
 
 import android.app.Dialog
 import android.content.Context
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.fragment.app.viewModels
+import com.example.hwaa.R
+import com.example.hwaa.core.base.BaseBottomSheetDialogFragment
 import com.example.hwaa.databinding.LayoutCreatePostBinding
 import com.example.hwaa.viewmodel.ForumViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+
+class CreatePostFragment :
+    BaseBottomSheetDialogFragment<LayoutCreatePostBinding, ForumViewModel>() {
 
 
-class CreatePostFragment : BottomSheetDialogFragment() {
     private val viewModel: ForumViewModel by viewModels()
-    private lateinit var binding: LayoutCreatePostBinding
+    override fun getVM(): ForumViewModel {
+        return viewModel
+    }
+
+    override fun getLayoutId(): Int {
+        return R.layout.layout_create_post
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = LayoutCreatePostBinding.inflate(inflater, container, false)
-        dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        return binding.root
+        dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

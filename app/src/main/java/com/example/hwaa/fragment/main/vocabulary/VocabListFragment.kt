@@ -2,7 +2,6 @@ package com.example.hwaa.fragment.main.vocabulary
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,9 +71,8 @@ class VocabListFragment :
     }
 
     override fun startReviseListener() {
-//        val dialogFragment: DialogFragment = CardSettingDialog()
-//        dialogFragment.show(childFragmentManager, "CardSettingDialog")
-        vocabularyNavigation.fromVocabularyToFlashCard()
+        val dialogFragment: DialogFragment = CardSettingDialog(vocabularyNavigation)
+        dialogFragment.show(childFragmentManager, "CardSettingDialog")
     }
 
     override fun backFromFlashCard() {
