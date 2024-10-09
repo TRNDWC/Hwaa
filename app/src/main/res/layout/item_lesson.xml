@@ -19,8 +19,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_lesson_icon"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 app:shapeAppearanceOverlay="@style/Circular"
@@ -35,7 +35,7 @@
             android:gravity="start"
             android:maxLines="2"
             android:text="Lesson 1"
-            android:textColor="@android:color/black"
+            android:textColor="@color/main_text_color"
             android:textSize="@dimen/lesson_item_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ib_bookmark"
@@ -46,9 +46,9 @@
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_margin="16dp"
             android:background="@drawable/book_item_background_shape"
             android:translationZ="-1dp"
-            android:layout_margin="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
             android:id="@+id/v_lesson_bottom_line"
             android:layout_width="3dp"
             android:layout_height="0dp"
-            android:background="@color/f2f2f2"
+            android:background="@color/item_book_image_bg_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/fl_lesson_icon"
             app:layout_constraintStart_toStartOf="@+id/fl_lesson_icon"
@@ -68,7 +68,7 @@
             android:id="@+id/v_lesson_top_line"
             android:layout_width="3dp"
             android:layout_height="0dp"
-            android:background="@color/f2f2f2"
+            android:background="@color/item_book_image_bg_color"
             app:layout_constraintBottom_toTopOf="@+id/fl_lesson_icon"
             app:layout_constraintEnd_toEndOf="@id/fl_lesson_icon"
             app:layout_constraintStart_toStartOf="@+id/fl_lesson_icon"
@@ -85,7 +85,8 @@
             app:layout_constraintBottom_toBottomOf="@id/v_bookmark"
             app:layout_constraintEnd_toEndOf="@id/v_bookmark"
             app:layout_constraintStart_toStartOf="@id/v_bookmark"
-            app:layout_constraintTop_toTopOf="@id/v_bookmark" />
+            app:layout_constraintTop_toTopOf="@id/v_bookmark"
+            app:tint="@color/item_book_image_bg_color" />
 
         <View
             android:id="@+id/v_bookmark"

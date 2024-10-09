@@ -12,7 +12,7 @@
         <shape android:shape="oval">
             <solid android:color="#FFFFFF" />
             <corners android:radius="80dp" />
-            <stroke android:width="3dp" android:color="@color/primary_color" />
+            <stroke android:width="3dp" android:color="@color/item_book_image_bg_color" />
         </shape>
     </item>
 </selector>

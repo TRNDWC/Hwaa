@@ -2,6 +2,7 @@ package com.example.hwaa.activity.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.example.hwaa.R
 import com.example.hwaa.core.base.BaseActivity
 import com.example.hwaa.databinding.ActivityMainBinding
@@ -11,6 +12,8 @@ import com.example.hwaa.navigation.forum.ForumNavigation
 import com.example.hwaa.util.ui.HwaaToolBarCallBack
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -68,6 +71,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         binding.fab.setOnClickListener {
             appNavigation.showDictionary(supportFragmentManager)
         }
+
+        val bottomAppBar = binding.bottomAppBar
+        val materialShapeDrawable = MaterialShapeDrawable().apply {
+            setFillColor(ContextCompat.getColorStateList(this@MainActivity, R.color.bottom_app_bar_color))
+            shapeAppearanceModel = shapeAppearanceModel.toBuilder()
+                .setAllCorners(CornerFamily.ROUNDED, 50f)
+                .build()
+        }
+        bottomAppBar.background = materialShapeDrawable
+
         binding.toolbar.callBack = this
     }
 

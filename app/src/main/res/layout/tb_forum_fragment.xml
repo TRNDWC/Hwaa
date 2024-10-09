@@ -6,7 +6,7 @@
         android:id="@+id/tbForum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/transparent"
         android:contentInsetStart="0dp"
         android:contentInsetEnd="0dp">
 

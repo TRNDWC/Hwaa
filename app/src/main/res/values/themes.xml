@@ -18,4 +18,8 @@
         <item name="android:colorControlActivated">@color/black</item>
     </style>
 
+    <style name="Hwaa.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="background">@drawable/bg_bottom_app_bar</item>
+    </style>
+
 </resources>
