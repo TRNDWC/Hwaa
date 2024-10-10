@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/transparent"
+        android:minHeight="@dimen/avatar_size"
         android:contentInsetStart="0dp"
         android:contentInsetEnd="0dp">
 
@@ -49,9 +50,10 @@
                 android:layout_marginEnd="16dp"
                 android:text="4.5/5"
                 android:textColor="@color/tb_book_item_color"
-                android:textSize="20sp"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
-                app:layout_constraintEnd_toStartOf="@id/iv_notification"
+                app:layout_constraintStart_toEndOf="@+id/iv_rate"
                 app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
 
             <ImageView
@@ -61,7 +63,8 @@
                 android:layout_marginEnd="5dp"
                 android:contentDescription="@string/rate"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
-                app:layout_constraintEnd_toStartOf="@id/tv_rate"
+                app:layout_constraintEnd_toStartOf="@+id/iv_notification"
+                app:layout_constraintStart_toEndOf="@+id/iv_streak"
                 app:layout_constraintTop_toTopOf="@+id/iv_avatar"
                 app:srcCompat="@drawable/ic_rate_day"
                 app:tint="@color/tb_book_item_color" />
@@ -73,9 +76,10 @@
                 android:layout_marginEnd="10dp"
                 android:text="5"
                 android:textColor="@color/tb_book_item_color"
-                android:textSize="20sp"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
-                app:layout_constraintEnd_toStartOf="@id/iv_rate"
+                app:layout_constraintStart_toEndOf="@+id/iv_streak"
                 app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
 
             <ImageView
@@ -85,7 +89,8 @@
                 android:layout_marginEnd="5dp"
                 android:contentDescription="@string/streak"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
-                app:layout_constraintEnd_toStartOf="@id/tv_streak"
+                app:layout_constraintEnd_toStartOf="@id/iv_rate"
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
                 app:layout_constraintTop_toTopOf="@+id/iv_avatar"
                 app:srcCompat="@drawable/ic_streak_day"
                 app:tint="@color/tb_book_item_color" />
