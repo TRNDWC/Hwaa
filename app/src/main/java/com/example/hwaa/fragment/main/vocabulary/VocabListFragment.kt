@@ -25,24 +25,7 @@ class VocabListFragment :
     @Inject
     lateinit var vocabularyNavigation: VocabularyNavigation
     private val viewModel: VocabularyViewModel by viewModels()
-    private val adapter = VocabsAdapter(
-        listOf(
-            "你好",
-            "你好吗",
-            "我很好",
-            "你呢",
-            "我也很好",
-            "再见",
-            "谢谢",
-            "不客气",
-            "对不起",
-            "没关系",
-            "请问",
-            "请坐",
-            "请喝茶",
-            "请吃饭"
-        )
-    )
+    private lateinit var adapter: VocabsAdapter
     private val tagList: MutableList<TagType> = mutableListOf()
 
     override fun getVM() = viewModel
@@ -51,6 +34,24 @@ class VocabListFragment :
         super.onViewCreated(view, savedInstanceState)
         (activity as com.example.hwaa.activity.main.MainActivity).getBinding().toolbar.tagClickListener =
             this
+        adapter = VocabsAdapter(
+            listOf(
+                "你好",
+                "你好吗",
+                "我很好",
+                "你呢",
+                "我也很好",
+                "再见",
+                "谢谢",
+                "不客气",
+                "对不起",
+                "没关系",
+                "请问",
+                "请坐",
+                "请喝茶",
+                "请吃饭"
+            ), requireContext()
+        )
         binding.rvVocabs.adapter = adapter
         binding.rvVocabs.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.rvVocabs.edgeEffectFactory = BounceEdgeEffectFactory()
