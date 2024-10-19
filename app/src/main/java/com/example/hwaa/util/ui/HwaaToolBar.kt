@@ -73,7 +73,6 @@ class HwaaToolBar @JvmOverloads constructor(
                 val binding =
                     TbVocabFragmentBinding.inflate(LayoutInflater.from(context), this, true)
                 setListenerForVocab(binding)
-                createTag(binding)
                 binding
             }
 
@@ -124,49 +123,4 @@ class HwaaToolBar @JvmOverloads constructor(
             tagClickListener?.backFromFlashCard()
         }
     }
-
-    private fun createTag(binding: TbVocabFragmentBinding) {
-        val tagText = listOf(
-            TagType.MASTERED,
-            TagType.NEW,
-            TagType.NOUN,
-            TagType.VERB,
-            TagType.ADJECTIVE,
-            TagType.ADVERB,
-            TagType.IN_PROGRESS,
-            TagType.NEED_PRACTICE
-        )
-
-        for (tag in tagText) {
-            val vocabTag = VocabTag(context, null, 0, false, tag)
-            vocabTag.setTagText(tag.name)
-            vocabTag.setTagClickListener {
-                addSelectedTag(binding, vocabTag)
-                vocabTag.visibility = GONE
-                tagClickListener?.tagSelectedListener(tag)
-            }
-            binding.llTag.addView(vocabTag)
-        }
-    }
-
-    private fun addSelectedTag(binding: TbVocabFragmentBinding, tag: VocabTag) {
-        val selectedTag = VocabTag(context, null, 0, true, tag.tagType)
-        selectedTag.setTagText(tag.tagType.name)
-        selectedTag.setTagClickListener {
-            removeSelectedTag(binding, selectedTag)
-            tagClickListener?.tagSelectedListener(tag.tagType)
-        }
-        binding.llSelectedTag.addView(selectedTag)
-    }
-
-    private fun removeSelectedTag(binding: TbVocabFragmentBinding, tag: VocabTag) {
-        binding.llSelectedTag.removeView(tag)
-        for (i in 0 until binding.llTag.childCount) {
-            val child = binding.llTag.getChildAt(i) as VocabTag
-            if (child.tagType == tag.tagType) {
-                child.visibility = VISIBLE
-            }
-        }
-    }
-
 }
