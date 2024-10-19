@@ -3,7 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="unselect_item_color">#131313</color>
-    <color name="primary_color">#D6001C</color>
+    <color name="primary_color">#3A94E7</color>
     <color name="bottom_item_background">#3DD598</color>
     <color name="e5f2ff">#E5F2FF</color>
     <color name="f2f2f2">#F2F2F2</color>
@@ -13,11 +13,13 @@
     <color name="seek_bar_progress">#ffb600</color>
     <color name="seek_bar_secondary_progress">#3399CC</color>
     <color name="main_background_color">#ffffff</color>
-    <color name="appbar_background_color">#30444E</color>
-    <color name="bottom_app_bar_color">#30444E</color>
+    <color name="appbar_background_color">#ffffff</color>
+    <color name="bottom_app_bar_color">#ffffff</color>
     <color name="bottom_app_bar_item_color">#3DD598</color>
-    <color name="main_text_color">#FFFFFF</color>
-    <color name="item_lesson_background_color">#30444E</color>
+    <color name="main_text_color">#000000</color>
+    <color name="item_lesson_background_color">#ffffff</color>
     <color name="tb_book_item_color">#96A7AF</color>
-    <color name="item_book_image_bg_color">#3ED598</color>
+    <color name="item_book_image_bg_color">#3A94E7</color>
+    <color name="start_lesson_color">#ffffff</color>
+    <color name="bg_topic_color">#1A3A94E7</color>
 </resources>

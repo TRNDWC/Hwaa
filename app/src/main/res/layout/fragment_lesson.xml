@@ -7,7 +7,7 @@
         android:id="@+id/fragment_lesson"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/transparent"
         tools:context=".fragment.main.book.LessonFragment">
 
         <com.yuyakaido.android.cardstackview.CardStackView
