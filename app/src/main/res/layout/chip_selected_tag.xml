@@ -6,7 +6,6 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_selected_tag"
         android:paddingHorizontal="4dp">
 
         <com.google.android.material.chip.Chip

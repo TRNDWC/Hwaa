@@ -9,35 +9,47 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
-            app:cardUseCompatPadding="true">
+            app:cardElevation="4dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivVocabImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
                     android:id="@+id/tvChineseCharacter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="汉字"
+                    android:layout_margin="16dp"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/ivVocabImage"/>
 
                 <TextView
                     android:id="@+id/tvPinyin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
                     android:text="pinyin"
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@id/tvChineseCharacter"
                     app:layout_constraintTop_toBottomOf="@id/tvChineseCharacter" />
 
@@ -49,12 +61,12 @@
                     android:backgroundTint="@color/primary_color"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="4dp"
+                    android:layout_margin="16dp"
                     android:text="Status"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvChineseCharacter"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tvChineseCharacter" />
+                    app:layout_constraintEnd_toEndOf="@+id/ivVocabImage"
+                    app:layout_constraintTop_toTopOf="@+id/ivVocabImage"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hwaa.R
@@ -13,6 +14,7 @@ import com.example.hwaa.navigation.vocabulary.VocabularyNavigation
 import com.example.hwaa.util.ui.BounceEdgeEffectFactory
 import com.example.hwaa.util.ui.TagClickListener
 import com.example.hwaa.util.ui.TagType
+import com.example.hwaa.util.ui.VocabTag
 import com.example.hwaa.viewmodel.VocabularyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -25,7 +27,8 @@ class VocabListFragment :
     @Inject
     lateinit var vocabularyNavigation: VocabularyNavigation
     private val viewModel: VocabularyViewModel by viewModels()
-    private lateinit var adapter: VocabsAdapter
+    private lateinit var vocabAdapter: VocabsAdapter
+    private lateinit var challengeAdapter: ChallengeAdapter
     private val tagList: MutableList<TagType> = mutableListOf()
 
     override fun getVM() = viewModel
@@ -34,7 +37,7 @@ class VocabListFragment :
         super.onViewCreated(view, savedInstanceState)
         (activity as com.example.hwaa.activity.main.MainActivity).getBinding().toolbar.tagClickListener =
             this
-        adapter = VocabsAdapter(
+        vocabAdapter = VocabsAdapter(
             listOf(
                 "你好",
                 "你好吗",
@@ -52,9 +55,26 @@ class VocabListFragment :
                 "请吃饭"
             ), requireContext()
         )
-        binding.rvVocabs.adapter = adapter
-        binding.rvVocabs.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding.rvVocabs.adapter = vocabAdapter
+        binding.rvVocabs.layoutManager = GridLayoutManager(context, 2)
         binding.rvVocabs.edgeEffectFactory = BounceEdgeEffectFactory()
+
+        binding.icChallengeList.challengesRecyclerView.apply {
+            adapter = ChallengeAdapter()
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        }
+
+        binding.icChallengeList.chipGroup.apply {
+            addView(VocabTag(context, tagType = TagType.MASTERED))
+            addView(VocabTag(context, tagType = TagType.IN_PROGRESS))
+            addView(VocabTag(context, tagType = TagType.NEED_PRACTICE))
+            addView(VocabTag(context, tagType = TagType.NEW))
+            addView(VocabTag(context, tagType = TagType.VERB))
+            addView(VocabTag(context, tagType = TagType.NOUN))
+            addView(VocabTag(context, tagType = TagType.ADJECTIVE))
+            addView(VocabTag(context, tagType = TagType.ADVERB))
+        }
+
     }
 
     override fun onResume() {
@@ -68,7 +88,7 @@ class VocabListFragment :
         } else {
             tagList.add(tagType)
         }
-        adapter.filter(tagList)
+        vocabAdapter.filter(tagList)
     }
 
     override fun startReviseListener() {

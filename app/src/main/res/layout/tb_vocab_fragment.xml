@@ -5,7 +5,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbVocabFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@color/transparent"
         app:contentInsetEnd="0dp"
         app:contentInsetStart="0dp"
@@ -35,7 +35,6 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_selected_tag"
                     android:backgroundTint="@color/f8f8f8"
                     android:fillViewport="true"
                     android:paddingHorizontal="8dp"
