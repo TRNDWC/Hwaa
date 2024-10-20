@@ -46,9 +46,10 @@ class StartFragment : BaseFragment<FragmentStartBinding, StartViewModel>(R.layou
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.startButton.setOnClickListener {
-            CoroutineScope(Dispatchers.Main).launch {
-                (activity as StartActivity).moveToMainActivity()
-            }
+            startNavigation.fromStartToSignUp()
+        }
+        binding.startLogin.setOnClickListener {
+            startNavigation.fromStartToLogin()
         }
     }
 }

@@ -7,25 +7,47 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.hwaa.R
+import com.example.hwaa.activity.start.StartActivity
+import com.example.hwaa.core.base.BaseFragment
+import com.example.hwaa.databinding.FragmentAuthenticationBinding
+import com.example.hwaa.extension.setOnRightDrawableClickListener
+import com.example.hwaa.extension.validate
+import com.example.hwaa.navigation.start.StartNavigation
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AuthenticationFragment : Fragment() {
+@AndroidEntryPoint
+class AuthenticationFragment : BaseFragment<FragmentAuthenticationBinding, StartViewModel>(R.layout.fragment_authentication) {
 
-    companion object {
-        fun newInstance() = AuthenticationFragment()
-    }
-
+    @Inject
+    lateinit var startNavigation: StartNavigation
     private val viewModel: StartViewModel by viewModels()
+    override fun getVM() = viewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_authentication, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            etEmail.validate {
+                viewModel.email = it
+            }
+            etPassword.validate {
+                viewModel.password = it
+            }
+            etPassword.setOnRightDrawableClickListener {
+                viewModel.isPasswordVisible = !viewModel.isPasswordVisible
+                etPassword.transformationMethod = if (viewModel.isPasswordVisible) null else android.text.method.PasswordTransformationMethod.getInstance()
+            }
+            btnLogin.setOnClickListener {
+                CoroutineScope(Dispatchers.Main).launch {
+                    (activity as StartActivity).moveToMainActivity()
+                }
+            }
+            ivBack.setOnClickListener {
+                startNavigation.navigateUp()
+            }
+        }
     }
 }

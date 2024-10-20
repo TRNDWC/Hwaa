@@ -75,15 +75,6 @@
                             <option name="y" value="-167" />
                           </Point>
                         </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_authenticationFragment_to_informationFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -92,8 +83,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-26" />
-                            <option name="y" value="-166" />
+                            <option name="x" value="-366" />
+                            <option name="y" value="330" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -141,6 +132,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_startFragment_to_authenticationFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_startFragment_to_informationFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
