@@ -9,11 +9,7 @@
         android:id="@+id/authenticationFragment"
         android:name="com.example.hwaa.fragment.start.AuthenticationFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_authentication" >
-        <action
-            android:id="@+id/action_authenticationFragment_to_informationFragment"
-            app:destination="@id/informationFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_authentication" />
     <fragment
         android:id="@+id/languageLevelFragment"
         android:name="com.example.hwaa.fragment.start.LanguageLevelFragment"
@@ -36,6 +32,9 @@
         <action
             android:id="@+id/action_startFragment_to_authenticationFragment"
             app:destination="@id/authenticationFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
     </fragment>
     <fragment
         android:id="@+id/informationFragment"

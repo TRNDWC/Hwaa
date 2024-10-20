@@ -9,7 +9,7 @@ import javax.inject.Inject
 class StartNavigationImpl @Inject constructor() : BaseNavigatorImpl(),
     StartNavigation {
     override fun fromStartToSignUp() {
-        openScreen(R.id.action_startFragment_to_authenticationFragment)
+        openScreen(R.id.action_startFragment_to_informationFragment)
     }
 
     override fun fromStartToLogin() {
@@ -17,6 +17,6 @@ class StartNavigationImpl @Inject constructor() : BaseNavigatorImpl(),
     }
 
     override fun fromSignUpToInformation() {
-        openScreen(R.id.action_authenticationFragment_to_informationFragment)
+//        openScreen(R.id.)
     }
 }

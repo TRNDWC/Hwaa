@@ -4,4 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.hwaa.core.base.BaseViewModel
 
 class StartViewModel : BaseViewModel() {
+    var email: String = ""
+    var password: String = ""
+    var isPasswordVisible: Boolean = false
 }
