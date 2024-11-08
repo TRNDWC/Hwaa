@@ -6,7 +6,7 @@
     app:startDestination="@id/profileDetailedFragment">
     <fragment
         android:id="@+id/profileDetailedFragment"
-        android:name="com.example.hwaa.fragment.main.profile.ProfileDetailedFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.profile.ProfileDetailedFragment"
         android:label="fragment_profile_detailed"
         tools:layout="@layout/fragment_profile_detailed" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.example.hwaa.fragment.main.profile.SettingFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.profile.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>

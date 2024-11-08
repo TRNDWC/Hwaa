@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/transparent"
-        tools:context=".fragment.main.book.LessonFragment">
+        tools:context=".presentation.fragment.main.book.LessonFragment">
 
         <com.yuyakaido.android.cardstackview.CardStackView
             android:id="@+id/card_stack_view"

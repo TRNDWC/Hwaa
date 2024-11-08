@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/bookFragment"
-        android:name="com.example.hwaa.fragment.main.book.BookFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.book.BookFragment"
         android:label=""
         tools:layout="@layout/fragment_container" >
         <argument
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/vocabularyFragment"
-        android:name="com.example.hwaa.fragment.main.vocabulary.VocabularyFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.vocabulary.VocabularyFragment"
         android:label=""
         tools:layout="@layout/fragment_container" >
 
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/forumFragment"
-        android:name="com.example.hwaa.fragment.main.forum.ForumFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.forum.ForumFragment"
         android:label=""
         tools:layout="@layout/fragment_container" >
 
@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.hwaa.fragment.main.profile.ProfileFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.profile.ProfileFragment"
         android:label=""
         tools:layout="@layout/fragment_container" >
 

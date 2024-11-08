@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <com.example.hwaa.util.ui.CustomRecyclerView
+        <com.example.hwaa.presentation.util.ui.CustomRecyclerView
             android:id="@+id/rvSetting"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

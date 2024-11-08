@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/authenticationFragment"
-        android:name="com.example.hwaa.fragment.start.AuthenticationFragment"
+        android:name="com.example.hwaa.presentation.fragment.start.AuthenticationFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_authentication" />
     <fragment
         android:id="@+id/languageLevelFragment"
-        android:name="com.example.hwaa.fragment.start.LanguageLevelFragment"
+        android:name="com.example.hwaa.presentation.fragment.start.LanguageLevelFragment"
         android:label="fragment_language_level"
         tools:layout="@layout/fragment_language_level" >
         <action
@@ -21,12 +21,12 @@
     </fragment>
     <fragment
         android:id="@+id/timeFragment"
-        android:name="com.example.hwaa.fragment.start.TimeFragment"
+        android:name="com.example.hwaa.presentation.fragment.start.TimeFragment"
         android:label="fragment_time"
         tools:layout="@layout/fragment_time" />
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.hwaa.fragment.start.StartFragment"
+        android:name="com.example.hwaa.presentation.fragment.start.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/informationFragment"
-        android:name="com.example.hwaa.fragment.start.InformationFragment"
+        android:name="com.example.hwaa.presentation.fragment.start.InformationFragment"
         android:label="fragment_information"
         tools:layout="@layout/fragment_information" >
         <action

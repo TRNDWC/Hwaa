@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/postFragment"
-        android:name="com.example.hwaa.fragment.main.forum.PostFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.forum.PostFragment"
         android:label="fragment_post"
         tools:layout="@layout/fragment_post" >
         <action
@@ -25,12 +25,12 @@
 
     <fragment
         android:id="@+id/postDetailFragment"
-        android:name="com.example.hwaa.fragment.main.forum.PostDetailFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.forum.PostDetailFragment"
         android:label="fragment_post_detail"
         tools:layout="@layout/fragment_post_detail" />
     <fragment
         android:id="@+id/createPostFragment"
-        android:name="com.example.hwaa.fragment.main.forum.CreatePostFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.forum.CreatePostFragment"
         android:label="CreatePostFragment" />
 
 </navigation>

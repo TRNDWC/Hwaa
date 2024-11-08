@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.example.hwaa.util.ui.CustomRecyclerView
+            <com.example.hwaa.presentation.util.ui.CustomRecyclerView
                 android:id="@+id/rv_vocabs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/lessonFragment"
-        android:name="com.example.hwaa.fragment.main.book.LessonFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.book.LessonFragment"
         android:label="LessonFragment"
         tools:layout="@layout/fragment_lesson" />
     <fragment
         android:id="@+id/lessonListFragment"
-        android:name="com.example.hwaa.fragment.main.book.LessonsFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.book.LessonsFragment"
         android:label="LessonListFragment"
         tools:layout="@layout/fragment_lesson_list">
         <action

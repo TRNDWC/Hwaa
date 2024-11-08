@@ -6,7 +6,7 @@
     app:startDestination="@id/vocabListFragment">
     <fragment
         android:id="@+id/vocabListFragment"
-        android:name="com.example.hwaa.fragment.main.vocabulary.VocabListFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.vocabulary.VocabListFragment"
         android:label="fragment_vocab_list"
         tools:layout="@layout/fragment_vocab_list" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/flashCardFragment"
-        android:name="com.example.hwaa.fragment.main.vocabulary.FlashCardFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.vocabulary.FlashCardFragment"
         android:label="FlashCardFragment" />
 </navigation>
 

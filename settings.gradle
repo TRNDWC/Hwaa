@@ -22,5 +22,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Hwaa"
 include(":app")
-include ':domain'
-include ':data'
