@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="not_connected_internet">Internet is not connected</string>
+    <string name="fab">dictionary fab\n</string>
 </resources>

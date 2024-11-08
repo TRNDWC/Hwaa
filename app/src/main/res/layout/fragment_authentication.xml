@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:padding="24dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Back Arrow Icon -->
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="start"
+                android:contentDescription="Back"
+                android:scaleType="center"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/black" />
+
+            <!-- Welcome Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="32dp"
+                android:text="Welcome back"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- Subtitle Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="8dp"
+                android:text="Enter your credentials to continue"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <!-- Email/Username Input -->
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/input_background"
+                android:drawableStart="@drawable/ic_person"
+                android:drawableTint="@color/primary_color"
+                android:hint="Email or username"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:drawablePadding="8dp"
+                android:theme="@style/Hwaa.EditText" />
+
+            <!-- Password Input -->
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/input_background"
+                android:drawableStart="@drawable/ic_pass"
+                android:drawableEnd="@drawable/ic_visibility"
+                android:drawableTint="@color/primary_color"
+                android:hint="Password"
+                android:drawablePadding="8dp"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:theme="@style/Hwaa.EditText" />
+
+            <!-- Forgot Password Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="16dp"
+                android:text="Forgot password?"
+                android:textColor="#9E9E9E" />
+
+            <!-- Log In Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="@color/primary_color"
+                android:padding="16dp"
+                android:text="Log in"
+                android:textColor="#FFFFFF" />
+
+            <!-- Apple Login Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login_apple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="#000000"
+                android:padding="16dp"
+                android:text="Log in using Apple"
+                android:textColor="#FFFFFF" />
+
+            <!-- Google Login Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login_google"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="#F5F5F5"
+                android:padding="16dp"
+                android:text="Log in using Google"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</layout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_lesson_back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="32dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/bottom_background_corner_radius"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <WebView
+                android:id="@+id/wv_lesson_back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbarStyle="insideOverlay" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_lesson_front"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="32dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/bottom_background_corner_radius"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_chinese_character"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="汉字"
+                    android:textColor="@color/black"
+                    android:textSize="48sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_pinyin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="hànzì"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_chinese_character" />
+
+                <ImageButton
+                    android:id="@+id/iv_pronunciation"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/pronunciation"
+                    android:src="@drawable/ic_pronunciation_day"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_pinyin"
+                    app:layout_constraintStart_toEndOf="@+id/tv_pinyin"
+                    app:layout_constraintTop_toTopOf="@+id/tv_pinyin" />
+
+                <TextView
+                    android:id="@+id/tv_meaning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Meaning"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_pinyin" />
+
+                <TextView
+                    android:id="@+id/tv_example_sentence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Example Sentence"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_meaning" />
+
+                <ImageButton
+                    android:id="@+id/ib_bookmark"
+                    android:layout_width="@dimen/btn_bookmark_size"
+                    android:layout_height="@dimen/btn_bookmark_size"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/bookmark"
+                    android:src="@drawable/ic_bookmark_day"
+                    app:layout_constraintBottom_toBottomOf="@id/v_bookmark"
+                    app:layout_constraintEnd_toEndOf="@id/v_bookmark"
+                    app:layout_constraintStart_toStartOf="@id/v_bookmark"
+                    app:layout_constraintTop_toTopOf="@id/v_bookmark" />
+
+                <View
+                    android:id="@+id/v_bookmark"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/book_item_bookmark_background"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_chinese_character"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_chinese_character" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+</layout>

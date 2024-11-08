@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="_5fdp">5fdp</dimen>
+    <dimen name="bottom_background_corner_radius">12dp</dimen>
+    <dimen name="lesson_item_text_size">20sp</dimen>
+    <dimen name="btn_bookmark_size">48dp</dimen>
+    <dimen name="avatar_size">24dp</dimen>
+    <dimen name="hwaa_toolbar_height">93dp</dimen>
+    <dimen name="bottom_app_bar_height">65dp</dimen>
+    <dimen name="vocab_tag_stroke_width">1dp</dimen>
+    <dimen name="tag_min_width">65dp</dimen>
+    <dimen name="tag_text_size">12sp</dimen>
+    <dimen name="tag_corner_radius">1dp</dimen>
+    <dimen name="tag_min_height">32dp</dimen>
+    <dimen name="seek_bar_thickness">4dp</dimen>
+    <dimen name="seek_bar_thumb_size">20dp</dimen>
+</resources>

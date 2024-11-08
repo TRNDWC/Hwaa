@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_navigation"
+    app:startDestination="@+id/bookFragment">
+
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.book.BookFragment"
+        android:label=""
+        tools:layout="@layout/fragment_container" >
+        <argument
+            android:name="color"
+            app:argType="string"
+            android:defaultValue="#FF0000" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/vocabularyFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.vocabulary.VocabularyFragment"
+        android:label=""
+        tools:layout="@layout/fragment_container" >
+
+        <argument
+            android:name="color"
+            app:argType="string"
+            android:defaultValue="#00FF00" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/forumFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.forum.ForumFragment"
+        android:label=""
+        tools:layout="@layout/fragment_container" >
+
+        <argument
+            android:name="color"
+            app:argType="string"
+            android:defaultValue="#0000FF" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hwaa.presentation.fragment.main.profile.ProfileFragment"
+        android:label=""
+        tools:layout="@layout/fragment_container" >
+
+        <argument
+            android:name="color"
+            app:argType="string"
+            android:defaultValue="#FF00FF" />
+
+    </fragment>
+
+</navigation>

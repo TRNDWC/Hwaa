@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Progress"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:background="@color/e5f2ff"
+                app:shapeAppearanceOverlay="@style/Circular" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/circularProgressIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="50"
+                android:rotation="-90"
+                app:indicatorColor="@color/primary_color"
+                app:indicatorDirectionCircular="counterclockwise"
+                app:indicatorSize="160dp"
+                app:trackColor="@color/f8f8f8"
+                app:trackThickness="16dp" />
+
+            <TextView
+                android:id="@+id/tvProgressValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="50%"
+                android:textColor="@color/black"
+                android:textSize="32sp"
+                android:textStyle="italic" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:text="Knowledge"
+            android:textColor="@color/black"
+
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tvLevelValue"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="@color/f8f8f8"
+                android:drawablePadding="8dp"
+                android:paddingTop="12dp"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:drawableTopCompat="@drawable/ic_vocab_stat" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="68dp"
+                android:background="@color/f8f8f8" />
+
+            <TextView
+                android:id="@+id/tvDayLeft"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="@color/f8f8f8"
+                android:drawablePadding="8dp"
+                android:paddingTop="12dp"
+                android:text="Day Left"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                app:drawableTopCompat="@drawable/ic_time" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="8dp"
+            android:background="@color/f8f8f8" />
+
+    </LinearLayout>
+
+</layout>
