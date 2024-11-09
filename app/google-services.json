@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "306701406147",
+    "project_id": "hwaa-439a6",
+    "storage_bucket": "hwaa-439a6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306701406147:android:cee58cd3143841a9dd3776",
+        "android_client_info": {
+          "package_name": "com.example.hwaa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqyqi8eY9eNXnkZ7PB0QZET-kqhfMr8LY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

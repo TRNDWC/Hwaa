@@ -123,4 +123,6 @@ class HwaaToolBar @JvmOverloads constructor(
             tagClickListener?.backFromFlashCard()
         }
     }
+
+    fun getBinding(): ViewBinding? = binding
 }

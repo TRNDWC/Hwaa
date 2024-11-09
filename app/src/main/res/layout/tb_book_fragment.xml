@@ -24,7 +24,7 @@
                 android:layout_marginStart="10dp"
                 android:background="@color/white"
                 android:contentDescription="@string/avatar"
-                app:layout_constraintBottom_toTopOf="@+id/progressIndicator"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/Circular" />
@@ -39,12 +39,11 @@
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/iv_avatar"
-                app:srcCompat="@drawable/ic_notification_day"
-                app:tint="#40DF9F" />
+                app:srcCompat="@drawable/ic_notification_day"/>
 
 
             <TextView
-                android:id="@+id/tv_rate"
+                android:id="@+id/tv_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -53,11 +52,11 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
-                app:layout_constraintStart_toEndOf="@+id/iv_rate"
+                app:layout_constraintStart_toEndOf="@+id/iv_star"
                 app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
 
             <ImageView
-                android:id="@+id/iv_rate"
+                android:id="@+id/iv_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
@@ -66,8 +65,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/iv_notification"
                 app:layout_constraintStart_toEndOf="@+id/iv_streak"
                 app:layout_constraintTop_toTopOf="@+id/iv_avatar"
-                app:srcCompat="@drawable/ic_rate_day"
-                app:tint="@color/tb_book_item_color" />
+                app:srcCompat="@drawable/ic_star_show" />
 
             <TextView
                 android:id="@+id/tv_streak"
@@ -89,11 +87,10 @@
                 android:layout_marginEnd="5dp"
                 android:contentDescription="@string/streak"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
-                app:layout_constraintEnd_toStartOf="@id/iv_rate"
+                app:layout_constraintEnd_toStartOf="@id/iv_star"
                 app:layout_constraintStart_toEndOf="@+id/iv_avatar"
                 app:layout_constraintTop_toTopOf="@+id/iv_avatar"
-                app:srcCompat="@drawable/ic_streak_day"
-                app:tint="@color/tb_book_item_color" />
+                app:srcCompat="@drawable/ic_streak_hide" />
 
             <!--            <com.google.android.material.progressindicator.LinearProgressIndicator-->
             <!--                android:id="@+id/progressIndicator"-->
