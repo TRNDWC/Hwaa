@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import com.example.hwaa.R
 import com.example.hwaa.presentation.core.base.BaseActivity
 import com.example.hwaa.databinding.ActivityMainBinding
+import com.example.hwaa.databinding.TbBookFragmentBinding
 import com.example.hwaa.presentation.navigation.AppNavigation
 import com.example.hwaa.presentation.navigation.book.BookNavigation
 import com.example.hwaa.presentation.navigation.forum.ForumNavigation
@@ -74,9 +75,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
 
         val bottomAppBar = binding.bottomAppBar
         val materialShapeDrawable = MaterialShapeDrawable().apply {
-            setFillColor(ContextCompat.getColorStateList(this@MainActivity, R.color.bottom_app_bar_color))
+            fillColor = ContextCompat.getColorStateList(this@MainActivity, R.color.bottom_app_bar_color)
             shapeAppearanceModel = shapeAppearanceModel.toBuilder()
-                .setAllCorners(CornerFamily.ROUNDED, 50f)
+                .setTopLeftCorner(CornerFamily.ROUNDED, 75f)
+                .setTopRightCorner(CornerFamily.ROUNDED, 75f)
                 .build()
         }
         bottomAppBar.background = materialShapeDrawable

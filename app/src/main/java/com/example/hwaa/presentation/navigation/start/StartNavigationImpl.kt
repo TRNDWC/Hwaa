@@ -17,6 +17,6 @@ class StartNavigationImpl @Inject constructor() : BaseNavigatorImpl(),
     }
 
     override fun fromSignUpToInformation() {
-//        openScreen(R.id.)
+        openScreen(R.id.action_informationFragment_to_authenticationFragment)
     }
 }
