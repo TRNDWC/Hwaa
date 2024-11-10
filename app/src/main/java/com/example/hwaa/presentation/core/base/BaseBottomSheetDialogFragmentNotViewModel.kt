@@ -14,7 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 abstract class BaseBottomSheetDialogFragmentNotViewModel<BD : ViewDataBinding> : BottomSheetDialogFragment() {
 
     private var _binding: BD? = null
-    protected val binding: BD
+    protected open val binding: BD
         get() = _binding
             ?: throw IllegalStateException("Cannot access view after view destroyed or before view creation")
 

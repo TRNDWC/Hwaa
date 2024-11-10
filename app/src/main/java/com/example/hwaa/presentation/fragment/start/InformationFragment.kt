@@ -67,6 +67,7 @@ class InformationFragment :
                             displayName = displayName
                         )
                         viewModel.register(user)
+                        (activity as StartActivity).showLoading()
                     } else {
                         etConfirmPassword.error = getString(R.string.password_not_match)
                     }
@@ -92,6 +93,7 @@ class InformationFragment :
                     is Response.Success -> {
                         (activity as StartActivity).moveToMainActivity()
                     }
+
                     is Response.Error -> {
                         response.exception.let {
                             AlertDialog.Builder(requireContext())

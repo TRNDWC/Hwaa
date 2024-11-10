@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hwaa.R
-import com.example.hwaa.data.authentication.model.UserModel
+import com.example.hwaa.data.model.UserModel
 import com.example.hwaa.presentation.activity.main.MainActivity
 import com.example.hwaa.presentation.core.base.BaseFragment
 import com.example.hwaa.databinding.FragmentLessonListBinding
 import com.example.hwaa.databinding.TbBookFragmentBinding
-import com.example.hwaa.databinding.TbLessonFragmentBinding
 import com.example.hwaa.presentation.navigation.book.BookNavigation
 import com.example.hwaa.presentation.util.UserProvider
 import com.example.hwaa.presentation.util.ui.BounceEdgeEffectFactory
@@ -52,7 +51,6 @@ class LessonsFragment :
         val toolbarBinding =
             (activity as MainActivity).getBinding().toolbar.getBinding() as TbBookFragmentBinding
         toolbarBinding.apply {
-            Timber.tag("trndwcs").e("user: ${user.toString()} ${(user?.streak ?: 0) > 0}")
             Glide.with(root.context)
                 .load(user?.profileImage)
                 .circleCrop()

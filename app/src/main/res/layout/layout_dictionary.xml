@@ -26,120 +26,126 @@
             app:queryBackground="@color/transparent"
             app:searchIcon="@drawable/ic_search" />
 
-        <LinearLayout
-            android:id="@+id/fl_result"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:gravity="center|top"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_bar"
-            tools:visibility="visible">
+            android:scrollbars="none">
 
             <LinearLayout
-                android:id="@+id/word_section"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/word_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="pakno"
-                    android:textColor="@color/black"
-                    android:textSize="32sp"
-                    android:textStyle="bold" />
-
-                <!-- Synonyms or Pronunciation -->
-                <TextView
-                    android:id="@+id/pronunciation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="pak·no"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="18sp" />
-
-
-                <ImageView
-                    android:id="@+id/heart_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/ic_like_profile" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/synonym_section"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Synonyms: buang"
-                android:textColor="@color/primary_color" />
-
-            <LinearLayout
-                android:id="@+id/definition_section"
+                android:id="@+id/fl_result"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:gravity="center|top"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_bar"
+                tools:visibility="visible">
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/word_section"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="noun"
-                    android:textColor="@color/black"
-                    android:textStyle="italic" />
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/definition"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="1. Crazy, looney, loony..."
-                    android:textColor="@color/black" />
+                    <TextView
+                        android:id="@+id/word_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="pakno"
+                        android:textColor="@color/black"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/example"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Someone deranged and possibly dangerous."
-                    android:textColor="@android:color/darker_gray" />
+                    <!-- Synonyms or Pronunciation -->
+                    <TextView
+                        android:id="@+id/pronunciation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="pak·no"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="18sp" />
 
-                <!-- Adjective Section -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="adjective"
-                    android:textColor="@color/black"
-                    android:textStyle="italic" />
 
-                <TextView
-                    android:id="@+id/adjective"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="2. Crazy, half-baked, screwball..."
-                    android:textColor="@color/black" />
+                    <ImageView
+                        android:id="@+id/heart_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="16dp"
+                        android:src="@drawable/ic_like_profile" />
 
-                <TextView
-                    android:id="@+id/adjective_example"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Foolish; totally unsound..."
-                    android:textColor="@android:color/darker_gray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/definition_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/definition_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Definition"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/definition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="1. Crazy, looney, loony..."
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/example_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Example"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/example"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Someone deranged and possibly dangerous."
+                        android:textColor="@android:color/darker_gray" />
+
+                    <TextView
+                        android:id="@+id/contextual_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Contextual"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <WebView
+                        android:id="@+id/contextual_webview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@android:color/darker_gray" />
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </layout>

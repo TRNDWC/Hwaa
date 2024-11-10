@@ -1,25 +1,25 @@
 package com.example.hwaa.domain.entity
 
-import com.example.hwaa.data.authentication.model.UserModel
+import com.example.hwaa.data.model.UserModel
 
 enum class UserLevel {
-    BEGINNER,
-    INTERMEDIATE,
-    ADVANCED;
+    NEWBIE, ELEMENTARY, INTERMEDIATE, UPPER_INTERMEDIATE;
 
     fun nextLevel(): UserLevel {
         return when (this) {
-            BEGINNER -> INTERMEDIATE
-            INTERMEDIATE -> ADVANCED
-            ADVANCED -> ADVANCED
+            NEWBIE -> ELEMENTARY
+            ELEMENTARY -> INTERMEDIATE
+            INTERMEDIATE -> UPPER_INTERMEDIATE
+            UPPER_INTERMEDIATE -> UPPER_INTERMEDIATE
         }
     }
 
     fun previousLevel(): UserLevel {
         return when (this) {
-            BEGINNER -> BEGINNER
-            INTERMEDIATE -> BEGINNER
-            ADVANCED -> INTERMEDIATE
+            NEWBIE -> NEWBIE
+            ELEMENTARY -> NEWBIE
+            INTERMEDIATE -> ELEMENTARY
+            UPPER_INTERMEDIATE -> INTERMEDIATE
         }
     }
 
@@ -43,7 +43,7 @@ class UserEntity(
         password,
         "",
         0,
-        UserLevel.BEGINNER,
+        UserLevel.NEWBIE,
         0
     )
 
@@ -54,7 +54,7 @@ class UserEntity(
         password,
         "",
         0,
-        UserLevel.BEGINNER,
+        UserLevel.NEWBIE,
         0
     )
 

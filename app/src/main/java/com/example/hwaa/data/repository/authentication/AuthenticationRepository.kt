@@ -1,4 +1,4 @@
-package com.example.hwaa.domain.authentication
+package com.example.hwaa.data.repository.authentication
 
 import com.example.hwaa.domain.Response
 import com.example.hwaa.domain.entity.UserEntity

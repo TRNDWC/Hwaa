@@ -1,9 +1,8 @@
 package com.example.hwaa.domain.usecase.auth
 
-import com.example.hwaa.domain.authentication.AuthenticationRepository
+import com.example.hwaa.data.repository.authentication.AuthenticationRepository
 import com.example.hwaa.domain.entity.UserEntity
 import kotlinx.coroutines.flow.flow
-import timber.log.Timber
 import javax.inject.Inject
 
 class ResetPasswordUseCase @Inject constructor(

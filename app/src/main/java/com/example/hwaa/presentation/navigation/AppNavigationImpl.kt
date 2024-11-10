@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import com.example.hwaa.R
 import com.example.hwaa.presentation.core.navigatorComponent.BaseNavigatorImpl
-import com.example.hwaa.presentation.fragment.main.FragmentDictionary
+import com.example.hwaa.presentation.fragment.main.dictionary.FragmentDictionary
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
