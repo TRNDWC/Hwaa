@@ -44,5 +44,8 @@
         <action
             android:id="@+id/action_informationFragment_to_languageLevelFragment"
             app:destination="@id/languageLevelFragment" />
+        <action
+            android:id="@+id/action_informationFragment_to_authenticationFragment"
+            app:destination="@id/authenticationFragment" />
     </fragment>
 </navigation>

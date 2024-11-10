@@ -43,13 +43,21 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:progressTint="@color/primary_color"
+            android:visibility="gone"/>
+
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:backgroundTint="@color/bottom_app_bar_color"
+            android:background="@drawable/bg_bottom_app_bar"
             app:contentInsetEnd="0dp"
             app:contentInsetStart="0dp"
             app:hideOnScroll="true">
