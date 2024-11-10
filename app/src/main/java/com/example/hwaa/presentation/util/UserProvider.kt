@@ -2,7 +2,7 @@ package com.example.hwaa.presentation.util
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.hwaa.data.authentication.model.UserModel
+import com.example.hwaa.data.model.UserModel
 import com.google.gson.Gson
 
 object UserProvider {

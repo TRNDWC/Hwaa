@@ -1,10 +1,9 @@
 package com.example.hwaa.presentation.di
 
-import com.example.hwaa.data.authentication.AuthenticationRepositoryImpl
-import com.example.hwaa.domain.authentication.AuthenticationRepository
+import com.example.hwaa.data.repository.authentication.AuthenticationRepositoryImpl
+import com.example.hwaa.data.repository.authentication.AuthenticationRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,7 +1,6 @@
-package com.example.hwaa.data.authentication
+package com.example.hwaa.data.repository.authentication
 
 import com.example.hwaa.domain.Response
-import com.example.hwaa.domain.authentication.AuthenticationRepository
 import com.example.hwaa.domain.entity.UserEntity
 import com.example.hwaa.domain.entity.UserLevel
 import com.google.firebase.auth.AuthResult
@@ -35,7 +34,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
                 user.uid = data.user?.uid ?: ""
                 user.displayName = userData.getString("displayName") ?: ""
                 user.profileImage = userData.getString("profileImage") ?: ""
-                user.level = UserLevel.valueOf(userData.getString("level") ?: "BEGINNER")
+                user.level = UserLevel.valueOf(userData.getString("level") ?: UserLevel.NEWBIE.name)
                 user.stars = userData.getString("stars")?.toInt() ?: 0
                 user.streak = userData.getString("streak")?.toInt() ?: 0
             } catch (e: Exception) {

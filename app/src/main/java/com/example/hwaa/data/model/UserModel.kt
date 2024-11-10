@@ -1,4 +1,4 @@
-package com.example.hwaa.data.authentication.model
+package com.example.hwaa.data.model
 
 import com.example.hwaa.domain.entity.UserEntity
 import com.example.hwaa.domain.entity.UserLevel

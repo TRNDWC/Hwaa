@@ -40,7 +40,10 @@ class AuthenticationFragment :
                 val password = etPassword.text.toString()
                 if (email.isNotEmpty() && password.isNotEmpty()) {
                     userEntity = UserEntity(email, password)
-                    userEntity?.let { viewModel.login(it) }
+                    userEntity?.let {
+                        viewModel.login(it)
+                        (activity as StartActivity).showLoading()
+                    }
                 } else {
                     let {
                         if (email.isEmpty()) {
