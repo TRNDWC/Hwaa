@@ -29,12 +29,22 @@ class UserEntity(
     var uid: String,
     var displayName: String,
     var email: String,
-    val password: String,
+    var password: String,
     var profileImage: String,
     var streak: Int,
     var level: UserLevel,
     var stars: Int
 ) {
+    constructor() : this(
+        "",
+        "",
+        "",
+        "",
+        "https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=",
+        0,
+        UserLevel.NEWBIE,
+        0
+    )
 
     constructor(displayName: String, email: String, password: String) : this(
         "",
@@ -67,6 +77,17 @@ class UserEntity(
             streak,
             level,
             stars
+        )
+    }
+
+    fun toHashMap(): HashMap<String, Any> {
+        return hashMapOf(
+            "displayName" to displayName,
+            "email" to email,
+            "profileImage" to profileImage,
+            "streak" to streak,
+            "level" to level.name,
+            "stars" to stars
         )
     }
 

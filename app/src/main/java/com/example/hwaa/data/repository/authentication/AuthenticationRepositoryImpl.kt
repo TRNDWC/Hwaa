@@ -52,10 +52,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
             try {
                 val data = auth.createUserWithEmailAndPassword(user.email, user.password).await()
                 try {
-                    val userMap = hashMapOf(
-                        "email" to user.email,
-                        "displayName" to user.displayName
-                    )
+                    val userMap = user.toHashMap()
                     fireStore.collection("users").document(data.user?.uid ?: "").set(userMap)
                         .await()
                 } catch (e: Exception) {
