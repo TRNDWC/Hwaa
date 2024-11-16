@@ -32,17 +32,19 @@ class ProfileDetailedFragment :
         topProfile.ivSetting.setOnClickListener {
             profileNavigation.navigateToSetting()
         }
-        UserProvider.getUser()?.let {
+        UserProvider.getUser().let {
             user = it
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as MainActivity).setToolbarProfile()
+    private fun loadUser() {
+        UserProvider.getUser().let {
+            user = it
+        }
         binding.apply {
             Glide.with(requireContext())
                 .load(user.profileImage)
+                .centerCrop()
                 .placeholder(R.drawable.ic_profile)
                 .into(topProfile.ivAvatar)
 
@@ -50,5 +52,11 @@ class ProfileDetailedFragment :
             topProfile.tvEmail.text = user.email
             topProfile.tvLevel.text = user.level.name.lowercase()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).setToolbarProfile()
+        loadUser()
     }
 }

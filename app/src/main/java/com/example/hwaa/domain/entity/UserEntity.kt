@@ -68,6 +68,19 @@ class UserEntity(
         0
     )
 
+    fun translateFromUserModel(user: UserModel) : UserEntity {
+        return UserEntity(
+            user.uid,
+            user.displayName,
+            user.email,
+            "",
+            user.profileImage,
+            user.streak,
+            user.level,
+            user.stars
+        )
+    }
+
     fun translateToUserModel(): UserModel {
         return UserModel(
             uid,

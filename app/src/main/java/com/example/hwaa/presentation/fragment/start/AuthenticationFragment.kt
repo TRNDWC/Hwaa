@@ -59,6 +59,7 @@ class AuthenticationFragment :
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loginFlow.collect { response ->
+                (activity as StartActivity).hiddenLoading()
                 when (response) {
                     is Response.Success -> {
                         (activity as StartActivity).moveToMainActivity()
