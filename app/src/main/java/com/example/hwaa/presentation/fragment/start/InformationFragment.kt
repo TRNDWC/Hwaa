@@ -96,7 +96,7 @@ class InformationFragment :
                 when (response) {
                     is Response.Success -> {
                         (activity as StartActivity).moveToMainActivity()
-                        userEntity?.translateToUserModel()?.let { UserProvider.saveUser(it) }
+                        userEntity?.let { UserProvider.saveUser(UserEntity.translateToUserModel(it)) }
                     }
 
                     is Response.Error -> {

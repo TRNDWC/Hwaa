@@ -12,6 +12,7 @@ import dagger.hilt.android.scopes.ActivityScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 import javax.inject.Inject
 
 @ActivityScoped
@@ -39,9 +40,9 @@ class AuthenticationRepositoryImpl @Inject constructor(
                     user.uid = data.user?.uid ?: ""
                     user.displayName = userMap["displayName"] as String
                     user.profileImage = userMap["profileImage"] as String
-                    user.streak = userMap["streak"] as Int
-                    user.level = UserLevel.valueOf(userMap["level"] as String)
-                    user.stars = userMap["stars"] as Int
+                    user.streak = userMap["streak"] as String
+                    user.level = userMap["level"] as String
+                    user.stars = userMap["stars"] as String
                 }
             } catch (e: Exception) {
                 emit(Response.Error(e.localizedMessage ?: "Oops, something went wrong."))
@@ -58,11 +59,11 @@ class AuthenticationRepositoryImpl @Inject constructor(
             try {
                 val data = auth.createUserWithEmailAndPassword(user.email, user.password).await()
                 try {
-                    val newUserMap = user.toHashMap()
-                    realtimeDatabase.reference.child("users").child(data.user?.uid ?: "")
-                        .setValue(newUserMap).await()
-
+                    realtimeDatabase.reference.child("users").push()
                     user.uid = data.user?.uid ?: ""
+                    val newUserMap = UserEntity.toHashMap(user)
+                    realtimeDatabase.reference.child("users").child(user.uid).setValue(newUserMap)
+                        .await()
                 } catch (e: Exception) {
                     emit(Response.Error(e.localizedMessage ?: "Oops, something went wrong."))
                 }
@@ -83,7 +84,6 @@ class AuthenticationRepositoryImpl @Inject constructor(
 
     override suspend fun updateProfile(user: UserEntity): Flow<Response<Void?>> = flow {
         try {
-//            check if hwaa have child user.uid and profileImage
             if (user.profileImage.isNotEmpty()) {
                 val storageRef = storage.reference.child("hwaa").child("profileImages/${user.uid}")
                 val uri = user.profileImage.toUri()
@@ -91,7 +91,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
                 user.profileImage = uploadTask.storage.downloadUrl.await().toString()
             }
 
-            val userMap = user.toHashMap()
+            val userMap = UserEntity.toHashMap(user)
             realtimeDatabase.reference.child("users").child(user.uid).updateChildren(userMap)
                 .await()
 

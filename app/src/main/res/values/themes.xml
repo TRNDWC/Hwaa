@@ -20,6 +20,8 @@
 
     <style name="Hwaa.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
         <item name="background">@drawable/bg_bottom_app_bar</item>
+        <item name="layout_insetEdge">bottom</item>
+        <item name="elevation">8dp</item>
     </style>
 
     <style name="Hwaa.EditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">

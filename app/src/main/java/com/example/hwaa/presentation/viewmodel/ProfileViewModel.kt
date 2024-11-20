@@ -23,7 +23,7 @@ class ProfileViewModel @Inject constructor(
 
     fun updateProfile(userModel: UserModel) = viewModelScope.launch {
         updateProfileUseCase.invoke(
-            UserEntity().translateFromUserModel(userModel)
+            UserEntity.translateFromUserModel(userModel)
         ).collect {
             _updateFlow.emit(it)
         }
