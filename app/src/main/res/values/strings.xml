@@ -30,4 +30,5 @@
     <string name="confirm_password_empty">Confirm password is empty</string>
     <string name="ok">ok</string>
     <string name="error">error</string>
+    <string name="hint_comment">hint</string>
 </resources>

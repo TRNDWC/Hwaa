@@ -12,4 +12,5 @@ interface AuthenticationRepository {
     suspend fun logout()
     suspend fun userUid(): String
     suspend fun isLoggedIn(): Boolean
+    suspend fun updateProfile(user: UserEntity): Flow<Response<Void?>>
 }

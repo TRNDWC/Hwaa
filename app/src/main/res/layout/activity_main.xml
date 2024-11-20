@@ -13,8 +13,8 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="0dp"
             android:background="@color/appbar_background_color"
+            android:minHeight="0dp"
             tools:context=".presentation.activity.main.MainActivity">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -43,15 +43,6 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:progressTint="@color/primary_color"
-            android:visibility="gone"/>
-
-
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
@@ -60,32 +51,73 @@
             android:background="@drawable/bg_bottom_app_bar"
             app:contentInsetEnd="0dp"
             app:contentInsetStart="0dp"
+            app:elevation="8dp"
             app:hideOnScroll="true">
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="76dp"
-                android:background="@drawable/bg_bottom_app_bar"
-                app:hideOnScroll="true"
-                app:itemBackground="@drawable/bottom_item_background"
-                app:itemIconTint="@color/bottom_icon_color"
-                app:labelVisibilityMode="unlabeled"
-                app:menu="@menu/main_activity_bottom_bar_menu">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/fab"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/bg_circle_button"
-                    android:contentDescription="@string/fab"
-                    android:gravity="center"
-                    app:srcCompat="@drawable/ic_search"
-                    app:tint="@color/white" />
+                <FrameLayout
+                    android:id="@+id/flComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
+                    <EditText
+                        android:id="@+id/etComment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/background_edit_text"
+                        android:hint="@string/hint_comment"
+                        android:inputType="textMultiLine"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="16dp"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@null"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
 
+                    <ImageButton
+                        android:id="@+id/btnSend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="8dp"
+                        app:srcCompat="@drawable/ic_send"
+                        app:tint="@color/primary_color" />
+
+                </FrameLayout>
+
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNavigationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="76dp"
+                    app:hideOnScroll="true"
+                    app:itemBackground="@drawable/bottom_item_background"
+                    app:itemIconTint="@color/bottom_icon_color"
+                    app:labelVisibilityMode="unlabeled"
+                    app:menu="@menu/main_activity_bottom_bar_menu">
+
+                    <ImageButton
+                        android:id="@+id/fab"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_circle_button"
+                        android:contentDescription="@string/fab"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/ic_search"
+                        app:tint="@color/white" />
+
+                </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+            </LinearLayout>
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 

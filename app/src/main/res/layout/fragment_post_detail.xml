@@ -1,19 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/transparent">
 
-        <include
-            android:id="@+id/tbPostDetail"
-            layout="@layout/item_forum_post"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:layout_marginBottom="137dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.example.hwaa.presentation.util.ui.CustomRecyclerView
+                android:id="@+id/rv_comments"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/transparent" />
+
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
 
 </layout>

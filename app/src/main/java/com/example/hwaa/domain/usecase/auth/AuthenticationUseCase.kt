@@ -43,3 +43,10 @@ class GetUserUidUseCase @Inject constructor(
 ) {
     suspend operator fun invoke() = flow { emit(authenticationRepository.userUid()) }
 }
+
+class UpdateProfileUseCase @Inject constructor(
+    private val authenticationRepository: AuthenticationRepository
+) {
+    suspend operator fun invoke(user: UserEntity) =
+        authenticationRepository.updateProfile(user)
+}

@@ -107,6 +107,8 @@ dependencies {
     implementation libs.androidx.fragment.ktx
     implementation libs.androidx.lifecycle.livedata.ktx
     implementation libs.androidx.junit.ktx
+    implementation libs.firebase.database
+    implementation libs.firebase.storage
     kapt libs.androidx.lifecycle.livedata.ktx
 
     // Loading Image
@@ -128,9 +130,7 @@ dependencies {
     implementation libs.ormlite.android
 
     //palette
-    implementation libs.androidx.palette.ktx
-
-    //image picker
+    implementation libs.imagepicker
 
     //retrofit
     implementation libs.retrofit
