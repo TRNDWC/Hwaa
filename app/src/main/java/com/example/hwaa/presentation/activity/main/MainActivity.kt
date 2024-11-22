@@ -77,7 +77,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         val bottomAppBar = binding.bottomAppBar
         val materialShapeDrawable = MaterialShapeDrawable().apply {
             elevation = 8f
-            fillColor = ContextCompat.getColorStateList(this@MainActivity, R.color.bottom_app_bar_color)
+            fillColor =
+                ContextCompat.getColorStateList(this@MainActivity, R.color.bottom_app_bar_color)
             shapeAppearanceModel = shapeAppearanceModel.toBuilder()
                 .setTopLeftCorner(CornerFamily.ROUNDED, 75f)
                 .setTopRightCorner(CornerFamily.ROUNDED, 75f)
@@ -110,6 +111,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
             binding.collapsingToolbarLayout
         )
         binding.flComment.visibility = View.GONE
+        binding.bottomAppBar.performHide()
         setAppBarHideOnScroll(false)
     }
 

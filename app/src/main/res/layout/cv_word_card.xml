@@ -1,33 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_lesson_back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="32dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="@dimen/bottom_background_corner_radius"
-            app:cardPreventCornerOverlap="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <WebView
-                android:id="@+id/wv_lesson_back"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbarStyle="insideOverlay" />
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cv_lesson_front"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -36,31 +16,54 @@
             app:cardCornerRadius="@dimen/bottom_background_corner_radius"
             app:cardPreventCornerOverlap="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeWidth="4dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp">
 
+                <ImageView
+                    android:id="@+id/iv_word_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/border_image"
+                    android:padding="16dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toTopOf="@id/guideline"
+                    app:layout_constraintDimensionRatio="4:3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.4" />
+
                 <TextView
                     android:id="@+id/tv_chinese_character"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:text="汉字"
                     android:textColor="@color/black"
                     android:textSize="48sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
                 <TextView
                     android:id="@+id/tv_pinyin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:text="hànzì"
                     android:textColor="@color/black"
                     android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_chinese_character" />
 
@@ -71,18 +74,18 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/pronunciation"
                     android:src="@drawable/ic_pronunciation_day"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_pinyin"
-                    app:layout_constraintStart_toEndOf="@+id/tv_pinyin"
-                    app:layout_constraintTop_toTopOf="@+id/tv_pinyin" />
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_chinese_character"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_word_image"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_word_image" />
 
                 <TextView
                     android:id="@+id/tv_meaning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:text="Meaning"
                     android:textColor="@color/black"
                     android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_pinyin" />
 
@@ -90,35 +93,72 @@
                     android:id="@+id/tv_example_sentence"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:text="Example Sentence"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_meaning" />
 
-                <ImageButton
-                    android:id="@+id/ib_bookmark"
-                    android:layout_width="@dimen/btn_bookmark_size"
-                    android:layout_height="@dimen/btn_bookmark_size"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/bookmark"
-                    android:src="@drawable/ic_bookmark_day"
-                    app:layout_constraintBottom_toBottomOf="@id/v_bookmark"
-                    app:layout_constraintEnd_toEndOf="@id/v_bookmark"
-                    app:layout_constraintStart_toStartOf="@id/v_bookmark"
-                    app:layout_constraintTop_toTopOf="@id/v_bookmark" />
-
-                <View
-                    android:id="@+id/v_bookmark"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/book_item_bookmark_background"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_chinese_character"
+                <TextView
+                    android:id="@+id/tv_example_sentence_translation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Example Sentence Translation"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_chinese_character" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_example_sentence" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_right"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="32dp"
+            android:alpha="0"
+            app:cardBackgroundColor="@android:color/darker_gray"
+            app:cardCornerRadius="@dimen/bottom_background_corner_radius"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_right" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="32dp"
+            android:alpha="0"
+            android:src="@drawable/ic_launcher_foreground"
+            app:cardBackgroundColor="@android:color/darker_gray"
+            app:cardCornerRadius="@dimen/bottom_background_corner_radius"
+            app:cardPreventCornerOverlap="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_left" />
+        </com.google.android.material.card.MaterialCardView>
+
     </FrameLayout>
 </layout>
