@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.hwaa.databinding.LayoutEndQuizDialogBinding
+import com.example.hwaa.presentation.core.navigatorComponent.BaseNavigator
 import com.example.hwaa.presentation.navigation.book.BookNavigation
+import com.example.hwaa.presentation.navigation.vocabulary.VocabularyNavigation
 
-class ResultDialog(val score: Int, val navigation: BookNavigation) : DialogFragment() {
+class ResultDialog(val score: Int, val navigation: BaseNavigator) : DialogFragment() {
 
     private val binding by lazy {
         LayoutEndQuizDialogBinding.inflate(layoutInflater)
@@ -27,7 +29,11 @@ class ResultDialog(val score: Int, val navigation: BookNavigation) : DialogFragm
         super.onViewCreated(view, savedInstanceState)
         binding.btnClose.setOnClickListener {
             dismiss()
-            navigation.fromQuizToLessons(null)
+            if (navigation is BookNavigation) {
+                navigation.fromQuizToLessons(null)
+            } else if (navigation is VocabularyNavigation) {
+                navigation.navigateUp()
+            }
         }
         binding.tvDescription.text = "$score"
     }

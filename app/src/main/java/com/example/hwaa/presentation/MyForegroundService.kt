@@ -93,7 +93,6 @@ class MyForegroundService : Service() {
                 getPushWordStatUseCase.invoke().collectLatest {
                     when (it) {
                         is Response.Success -> {
-                            Timber.tag("trndwcs").e("Success: ${it.data}")
                             (it.data)
                             sendNotification(it.data)
                         }

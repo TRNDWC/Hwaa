@@ -39,7 +39,8 @@ sealed class BookItem {
     ) :
         BookItem()
 
-    data class Level(val progress: Int) : BookItem()
+    data class Level(val progress: Int, val lesson: LessonStatModel, val topic: TopicStatModel) :
+        BookItem()
 }
 
 interface LessonsCallback {
@@ -50,6 +51,7 @@ interface LessonsCallback {
 class LessonsAdapter(val callback: LessonsCallback) : RecyclerView.Adapter<ViewHolder>() {
 
     private val list = mutableListOf<BookItem>()
+    private var currentLevel: BookItem.Level? = null
 
     inner class LessonViewHolder(itemView: View) : ViewHolder(itemView) {
         val binding = ItemLessonBinding.bind(itemView)
@@ -153,6 +155,11 @@ class LessonsAdapter(val callback: LessonsCallback) : RecyclerView.Adapter<ViewH
                 holder.binding.apply {
                     tvProgress.text = "${item.progress}%"
                     circularProgressIndicator.progress = item.progress
+                    btnContinueStudying.setOnClickListener {
+                        callback.onItemClicked(item.lesson, item.topic)
+                    }
+                    level.text = item.topic.topicModel.title
+                    tvTitle.text = item.lesson.lessonModel.title
                 }
             }
         }
@@ -168,7 +175,6 @@ class LessonsAdapter(val callback: LessonsCallback) : RecyclerView.Adapter<ViewH
 
     private fun createBookList() {
         list.clear()
-        list.add(BookItem.Level(50))
     }
 
     private fun addStart(quantity: Int, view: LinearLayout) {
@@ -201,7 +207,10 @@ class LessonsAdapter(val callback: LessonsCallback) : RecyclerView.Adapter<ViewH
 
     fun updateList(data: List<TopicStatModel>) {
         list.clear()
-        list.add(BookItem.Level(50))
+        currentLevel = getLevel(data)
+        if (currentLevel != null) {
+            list.add(currentLevel!!)
+        }
         for (topicIndex in data.indices) {
             val topic = data[topicIndex]
             val isTopicEnable = if (topicIndex == 0) {
@@ -229,6 +238,22 @@ class LessonsAdapter(val callback: LessonsCallback) : RecyclerView.Adapter<ViewH
         }
     }
 
+    private fun getLevel(data: List<TopicStatModel>): BookItem.Level? {
+//        tim topic dang hoc, vaf lesson dang hoc
+        val currentTopic = data.firstOrNull { (it.totalFinished ?: 0) < it.topicModel.lessons.size }
+        if (currentTopic == null) {
+            return null
+        }
+        val currentLesson = currentTopic.topicModel.lessons.firstOrNull { it.star == 0 }
+        if (currentLesson == null) {
+            return null
+        }
+
+        val progress =
+            currentTopic.topicModel.lessons.count() { it.star != 0 } * 100 / currentTopic.topicModel.lessons.size
+        return BookItem.Level(progress, currentLesson, currentTopic)
+    }
+
     fun updateTopic(topicStatModel: TopicStatModel) {
         val index = list.indexOfFirst {
             it is BookItem.Header && it.topicStatModel.topicModel.id == topicStatModel.topicModel.id
@@ -240,7 +265,7 @@ class LessonsAdapter(val callback: LessonsCallback) : RecyclerView.Adapter<ViewH
         }
     }
 
-    fun updateLesson(lessons: List<LessonStatModel>, topicStatModel: TopicStatModel) {
+    private fun updateLesson(lessons: List<LessonStatModel>, topicStatModel: TopicStatModel) {
         for (lessonIndex in lessons.indices) {
             val lesson = lessons[lessonIndex]
             val index = list.indexOfFirst {
@@ -253,9 +278,29 @@ class LessonsAdapter(val callback: LessonsCallback) : RecyclerView.Adapter<ViewH
                     lessons[lessonIndex - 1].star != 0
                 }
                 list[index] = BookItem.Lesson(lesson, topicStatModel, lessonIndex, isLessonEnable)
+                if (isLessonEnable) {
+                    updateLevel(
+                        BookItem.Lesson(
+                            lesson,
+                            topicStatModel,
+                            lessonIndex,
+                            isLessonEnable
+                        )
+                    )
+                }
             }
         }
+
         notifyDataSetChanged()
+    }
+
+    private fun updateLevel(item: BookItem.Lesson) {
+        val progress =
+            item.topicStatModel.topicModel.lessons.count() { it.star != 0 } * 100 / item.topicStatModel.topicModel.lessons.size
+        val index = list.indexOfFirst { it is BookItem.Level }
+        if (index != -1) {
+            list[index] = BookItem.Level(progress, item.lessonStatModel, item.topicStatModel)
+        }
     }
 
     enum class EnableCase {

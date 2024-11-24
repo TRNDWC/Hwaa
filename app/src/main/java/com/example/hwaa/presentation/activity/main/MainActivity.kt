@@ -167,6 +167,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
         binding.flComment.visibility = View.GONE
     }
 
+    fun setToolbarQuiz() {
+        setAppBarHideOnScroll(true)
+        binding.appBarLayout.setExpanded(false, true)
+        binding.bottomAppBar.performHide()
+        binding.flComment.visibility = View.GONE
+    }
+
     fun showAppBar() {
         binding.appBarLayout.setExpanded(true, true)
         binding.bottomAppBar.performShow()

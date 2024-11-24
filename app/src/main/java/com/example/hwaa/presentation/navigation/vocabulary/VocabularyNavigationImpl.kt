@@ -11,4 +11,8 @@ class VocabularyNavigationImpl @Inject constructor() : BaseNavigatorImpl(),
     override fun fromVocabularyToFlashCard() {
         openScreen(R.id.action_vocabListFragment_to_flashCardFragment)
     }
+
+    override fun fromVocabularyToTest() {
+        openScreen(R.id.action_vocabListFragment_to_testFragment)
+    }
 }

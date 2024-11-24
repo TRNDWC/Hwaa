@@ -84,7 +84,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
 
     override suspend fun updateProfile(user: UserEntity): Flow<Response<Void?>> = flow {
         try {
-            if (user.profileImage.isNotEmpty()) {
+            if (user.profileImage.isNotEmpty() && user.profileImage.startsWith("content://")) {
                 val storageRef = storage.reference.child("hwaa").child("profileImages/${user.uid}")
                 val uri = user.profileImage.toUri()
                 val uploadTask = storageRef.putFile(uri).await()
@@ -97,6 +97,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
 
             emit(Response.Success(null))
         } catch (e: Exception) {
+            Timber.tag("trndwcs").e(e)
             emit(Response.Error(e.localizedMessage ?: "Oops, something went wrong."))
         }
     }

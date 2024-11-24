@@ -4,6 +4,7 @@ import com.example.hwaa.domain.Response
 import com.example.hwaa.domain.entity.LessonEntity
 import com.example.hwaa.domain.entity.LessonStatEntity
 import com.example.hwaa.domain.entity.QuestionEntity
+import com.example.hwaa.domain.entity.TestEntity
 import com.example.hwaa.domain.entity.TopicEntity
 import com.example.hwaa.domain.entity.TopicStatEntity
 import com.example.hwaa.domain.entity.WordLessonEntity
@@ -249,15 +250,19 @@ class LearningRepositoryImpl @Inject constructor(
                                             exampleTranslation = wordSnapshot.child("exampleTranslation").value.toString(),
                                             question = QuestionEntity().apply {
                                                 id = 0.toString()
-                                                question = questionSnapshot.child("question").value.toString()
-                                                answer = questionSnapshot.child("answer").value.toString()
+                                                question =
+                                                    questionSnapshot.child("question").value.toString()
+                                                answer =
+                                                    questionSnapshot.child("answer").value.toString()
                                                 options = optionsData
                                             },
                                             image = wordSnapshot.child("image").value.toString(),
                                             audio = wordSnapshot.child("audio").value.toString()
                                         )
-                                        isRemembered = wordStat.child("isRemembered").value.toString()
-                                        lastTimeLeaned = wordStat.child("lastTimeLeaned").value.toString()
+                                        isRemembered =
+                                            wordStat.child("isRemembered").value.toString()
+                                        lastTimeLeaned =
+                                            wordStat.child("lastTimeLeaned").value.toString()
                                         score = wordStat.child("score").value.toString()
                                     }
                                 } else null
@@ -286,7 +291,6 @@ class LearningRepositoryImpl @Inject constructor(
             wordStatsRef.removeEventListener(wordStatsListener)
         }
     }
-
 
 
     override suspend fun getPushWordStat(): Flow<Response<WordStatEntity>> {
@@ -374,5 +378,145 @@ class LearningRepositoryImpl @Inject constructor(
                 emit(Response.Error(e.toString()))
             }
         }
+    }
+
+    override suspend fun getTestList(): Flow<Response<List<TestEntity>>> {
+        return flow {
+            Timber.tag("trndwcs").d("getTestList invoke")
+            try {
+                val user = UserProvider.getUser()
+                val tests = mutableListOf<TestEntity>()
+
+                // Collect results from getWordStatList directly in this flow
+                getWordStatList().collect { wordStatListResponse ->
+                    when (wordStatListResponse) {
+                        is Response.Success -> {
+                            val words = wordStatListResponse.data
+                            Timber.tag("trndwcs").d("Fetched words: $words") // Log fetched words
+
+                            // 1. Nhóm từ chưa thuộc
+                            val notRememberedWords =
+                                words.filter { it.isRemembered != "true" }.take(5)
+                            if (notRememberedWords.isNotEmpty()) {
+                                tests.add(
+                                    createTestFromWords(
+                                        notRememberedWords,
+                                        "Nhóm từ chưa thuộc",
+                                        "Hãy ôn tập những từ chưa thuộc"
+                                    )
+                                )
+                                Timber.tag("trndwcs").d("Added test for 'Nhóm từ chưa thuộc'")
+                            }
+
+                            // 2. Nhóm từ đã thuộc nhưng lâu chưa ôn tập
+                            val longTimeNotPracticed = words.filter { it.isRemembered == "true" }
+                                .sortedBy { it.lastTimeLeaned.toLong() }
+                                .take(5)
+                            if (longTimeNotPracticed.isNotEmpty()) {
+                                tests.add(
+                                    createTestFromWords(
+                                        longTimeNotPracticed,
+                                        "Nhóm từ lâu chưa ôn tập",
+                                        "Hãy ôn tập những từ đã chưa ôn tập"
+                                    )
+                                )
+                                Timber.tag("trndwcs")
+                                    .d("Added test for 'Nhóm từ đã thuộc nhưng lâu chưa ôn tập'")
+                            }
+
+                            // 3. Nhóm từ có điểm thấp
+                            val lowScoreWords = words.sortedBy { it.score.toLong() }.take(5)
+                            if (lowScoreWords.isNotEmpty()) {
+                                tests.add(
+                                    createTestFromWords(
+                                        lowScoreWords,
+                                        "Nhóm từ có điểm thấp",
+                                        "Hãy ôn tập những từ có điểm thấp"
+                                    )
+                                )
+                                Timber.tag("trndwcs").d("Added test for 'Nhóm từ có điểm thấp'")
+                            }
+
+                            // 4. Nhóm từ có điểm cao và lâu chưa ôn tập
+                            val highScoreLongTimeNotPracticed =
+                                words.filter { it.score.toLong() >= 70 }
+                                    .sortedBy { it.lastTimeLeaned.toLong() }
+                                    .take(5)
+                            if (highScoreLongTimeNotPracticed.isNotEmpty()) {
+                                tests.add(
+                                    createTestFromWords(
+                                        highScoreLongTimeNotPracticed,
+                                        "Nhóm từ có điểm cao nhưng lâu chưa ôn tập",
+                                        "Hãy ôn tập những từ có điểm cao nhưng lâu chưa ôn tập"
+                                    )
+                                )
+                                Timber.tag("trndwcs")
+                                    .d("Added test for 'Nhóm từ có điểm cao nhưng lâu chưa ôn tập'")
+                            }
+
+                            // 5. Nhóm từ mới học gần đây
+                            val recentlyLearnedWords =
+                                words.filter { it.lastTimeLeaned.toLong() > System.currentTimeMillis() - 86400000 }
+                                    .take(5)
+                            if (recentlyLearnedWords.isNotEmpty()) {
+                                tests.add(
+                                    createTestFromWords(
+                                        recentlyLearnedWords,
+                                        "Nhóm từ mới học gần đây",
+                                        "Hãy ôn tập những từ mới học gần đây"
+                                    )
+                                )
+                                Timber.tag("trndwcs").d("Added test for 'Nhóm từ mới học gần đây'")
+                            }
+
+                            // 6. Nhóm từ ngẫu nhiên
+                            if (words.isNotEmpty()) {
+                                val randomWords = words.shuffled().take(5)
+                                tests.add(
+                                    createTestFromWords(
+                                        randomWords,
+                                        "Nhóm từ ngẫu nhiên",
+                                        "Hãy ôn tập những từ ngẫu nhiên"
+                                    )
+                                )
+                                Timber.tag("trndwcs").d("Added test for 'Nhóm từ ngẫu nhiên'")
+                            }
+
+                            // 7. Nhóm từ ngẫu nhiên khác
+                            if (words.isNotEmpty()) {
+                                val randomWords2 = words.shuffled().take(5)
+                                tests.add(
+                                    createTestFromWords(
+                                        randomWords2,
+                                        "Nhóm từ ngẫu nhiên khác",
+                                        "Hãy ôn tập những từ ngẫu nhiên khác"
+                                    )
+                                )
+                                Timber.tag("trndwcs").d("Added test for 'Nhóm từ ngẫu nhiên khác'")
+                            }
+                            emit(Response.Success(tests))
+                            Timber.tag("trndwcs").d("Emitting tests: $tests")
+                        }
+
+                        is Response.Error -> {
+                            Timber.tag("trndwcs")
+                                .e("getWordStatList error: ${wordStatListResponse.exception}")
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                emit(Response.Error(e.toString()))
+            }
+        }
+    }
+
+    private fun createTestFromWords(words: List<WordStatEntity>, s: String, d: String): TestEntity {
+        return TestEntity(
+            id = 0,
+            name = s,
+            description = d,
+            image = "",
+            words = words
+        )
     }
 }

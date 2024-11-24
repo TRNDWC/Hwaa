@@ -1,8 +1,10 @@
 package com.example.hwaa.domain.usecase.learning
 
+import com.example.hwaa.data.model.TestModel
 import com.example.hwaa.data.model.WordStatModel
 import com.example.hwaa.data.repository.learning.LearningRepository
 import com.example.hwaa.domain.Response
+import com.example.hwaa.domain.entity.TestEntity
 import com.example.hwaa.domain.entity.TopicStatEntity
 import com.example.hwaa.domain.entity.WordStatEntity
 import kotlinx.coroutines.flow.Flow
@@ -77,5 +79,29 @@ class UpdateWordStatUseCase @Inject constructor(
         Timber.tag("trndwcs")
             .e("UpdateWordStatUseCase invoke wordId: $wordId, score: $score, isRemember: $isRemember")
         return learningRepository.updateWordStat(wordId, score, isRemember)
+    }
+}
+
+
+class GetTestListUseCase @Inject constructor(
+    private val learningRepository: LearningRepository
+) {
+    suspend operator fun invoke(): Flow<Response<List<TestModel>>> {
+        Timber.tag("trndwcs").e("GetTestListUseCase invoke")
+        return learningRepository.getTestList().map { response ->
+            Timber.tag("trndwcs").e("GetTestListUseCase invoke response: $response")
+            when (response) {
+                is Response.Success -> {
+                    val testList = response.data.map { testEntity ->
+                        TestEntity.translateToModel(testEntity)
+                    }
+                    Response.Success(testList)
+                }
+
+                is Response.Error -> {
+                    Response.Error(response.exception)
+                }
+            }
+        }
     }
 }

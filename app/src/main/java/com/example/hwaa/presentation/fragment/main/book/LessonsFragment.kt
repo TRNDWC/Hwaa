@@ -1,11 +1,16 @@
 package com.example.hwaa.presentation.fragment.main.book
 
 import android.annotation.SuppressLint
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -35,7 +40,16 @@ class LessonsFragment :
     private val viewModel: LessonViewModel by activityViewModels()
     override fun getVM() = viewModel
     private val adapter: LessonsAdapter by lazy { LessonsAdapter(this) }
-    private val user: UserModel = UserProvider.getUser()
+    private var user: UserModel = UserProvider.getUser()
+
+    private val receiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            val updatedData = intent?.getStringExtra("key")
+            if (updatedData == "Updated Data") {
+                user = UserProvider.getUser()
+            }
+        }
+    }
 
     @Inject
     lateinit var bookNavigation: BookNavigation
@@ -49,6 +63,18 @@ class LessonsFragment :
         handleFlow()
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        val intentFilter = IntentFilter("com.example.DATA_CHANGED")
+        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(receiver, intentFilter)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(receiver)
+    }
+
     override fun onItemClicked(lessonStatModel: LessonStatModel, topicStatModel: TopicStatModel) {
         viewModel.selectedLesson = lessonStatModel
         viewModel.selectedTopic = TopicStatModel.copy(topicStatModel)
@@ -59,13 +85,14 @@ class LessonsFragment :
     override fun onResume() {
         super.onResume()
         (activity as MainActivity).setToolbarLessons()
+        setUser()
+    }
+
+    private fun setUser() {
         val toolbarBinding =
             (activity as MainActivity).getBinding().toolbar.getBinding() as TbBookFragmentBinding
         toolbarBinding.apply {
-            Glide.with(root.context)
-                .load(user.profileImage)
-                .circleCrop()
-                .into(ivAvatar)
+            Glide.with(root.context).load(user.profileImage).circleCrop().into(ivAvatar)
             tvStreak.apply {
                 text = user.streak.toString()
                 setTextColor(
@@ -80,8 +107,7 @@ class LessonsFragment :
                 text = user.stars.toString()
                 setTextColor(
                     ContextCompat.getColor(
-                        root.context,
-                        if (user.stars > 0) R.color.star_show else R.color.star_hide
+                        root.context, if (user.stars > 0) R.color.star_show else R.color.star_hide
                     )
                 )
             }
@@ -89,8 +115,7 @@ class LessonsFragment :
             tvStar.text = user.stars.toString()
 
             ivStreak.setImageResource(
-                if (user.streak > 0
-                ) R.drawable.ic_streak_show else R.drawable.ic_streak_hide
+                if (user.streak > 0) R.drawable.ic_streak_show else R.drawable.ic_streak_hide
             )
 
             ivStar.setImageResource(
