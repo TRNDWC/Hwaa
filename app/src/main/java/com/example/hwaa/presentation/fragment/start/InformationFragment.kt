@@ -15,6 +15,7 @@ import com.example.hwaa.domain.entity.UserEntity
 import com.example.hwaa.presentation.extension.setOnRightDrawableClickListener
 import com.example.hwaa.presentation.extension.validate
 import com.example.hwaa.presentation.navigation.start.StartNavigation
+import com.example.hwaa.presentation.util.UserProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -28,6 +29,7 @@ class InformationFragment :
     lateinit var startNavigation: StartNavigation
     private val viewModel: StartViewModel by viewModels()
     override fun getVM() = viewModel
+    private var userEntity: UserEntity? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,12 +63,13 @@ class InformationFragment :
                 val displayName = etFullName.text.toString()
                 if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
                     if (password == confirmPassword) {
-                        val user = UserEntity(
-                            email = email,
-                            password = password,
-                            displayName = displayName
-                        )
-                        viewModel.register(user)
+                        userEntity = UserEntity()
+                        userEntity?.apply {
+                            this.email = email
+                            this.password = password
+                            this.displayName = displayName
+                            viewModel.register(this)
+                        }
                         (activity as StartActivity).showLoading()
                     } else {
                         etConfirmPassword.error = getString(R.string.password_not_match)
@@ -89,9 +92,11 @@ class InformationFragment :
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.registerFlow.collect { response ->
+                (requireActivity() as StartActivity).hiddenLoading()
                 when (response) {
                     is Response.Success -> {
                         (activity as StartActivity).moveToMainActivity()
+                        userEntity?.let { UserProvider.saveUser(UserEntity.translateToUserModel(it)) }
                     }
 
                     is Response.Error -> {

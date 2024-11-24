@@ -76,7 +76,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
 
         val bottomAppBar = binding.bottomAppBar
         val materialShapeDrawable = MaterialShapeDrawable().apply {
-            fillColor = ContextCompat.getColorStateList(this@MainActivity, R.color.bottom_app_bar_color)
+            elevation = 8f
+            fillColor =
+                ContextCompat.getColorStateList(this@MainActivity, R.color.bottom_app_bar_color)
             shapeAppearanceModel = shapeAppearanceModel.toBuilder()
                 .setTopLeftCorner(CornerFamily.ROUNDED, 75f)
                 .setTopRightCorner(CornerFamily.ROUNDED, 75f)
@@ -108,6 +110,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
             R.layout.tb_lesson_fragment,
             binding.collapsingToolbarLayout
         )
+        binding.flComment.visibility = View.GONE
+        binding.bottomAppBar.performHide()
         setAppBarHideOnScroll(false)
     }
 
@@ -118,6 +122,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
             R.layout.tb_forum_fragment,
             binding.collapsingToolbarLayout
         )
+        binding.flComment.visibility = View.GONE
         setAppBarHideOnScroll(true)
     }
 
@@ -128,11 +133,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
             R.layout.tb_book_fragment,
             binding.collapsingToolbarLayout
         )
+        binding.flComment.visibility = View.GONE
     }
 
     fun setToolbarDetailPost() {
         setAppBarHideOnScroll(false)
         showAppBar()
+        binding.flComment.visibility = View.VISIBLE
         binding.toolbar.inflateToolBarLayout(
             R.layout.tb_detail_post_fragment,
             binding.collapsingToolbarLayout
@@ -147,6 +154,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
             R.layout.tb_vocab_fragment,
             binding.collapsingToolbarLayout
         )
+        binding.flComment.visibility = View.GONE
     }
 
     fun setToolbarFlashCard() {
@@ -156,6 +164,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), HwaaToo
             R.layout.tb_flash_card,
             binding.collapsingToolbarLayout
         )
+        binding.flComment.visibility = View.GONE
     }
 
     fun showAppBar() {

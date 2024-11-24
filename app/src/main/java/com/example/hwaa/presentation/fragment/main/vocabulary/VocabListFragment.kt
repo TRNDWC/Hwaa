@@ -1,15 +1,20 @@
 package com.example.hwaa.presentation.fragment.main.vocabulary
 
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hwaa.R
 import com.example.hwaa.presentation.core.base.BaseFragment
 import com.example.hwaa.databinding.FragmentVocabListBinding
+import com.example.hwaa.domain.Response
 import com.example.hwaa.presentation.navigation.vocabulary.VocabularyNavigation
 import com.example.hwaa.presentation.activity.main.MainActivity
 import com.example.hwaa.presentation.util.ui.BounceEdgeEffectFactory
@@ -18,6 +23,7 @@ import com.example.hwaa.presentation.util.ui.TagType
 import com.example.hwaa.presentation.util.ui.VocabTag
 import com.example.hwaa.presentation.viewmodel.VocabularyViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -36,26 +42,13 @@ class VocabListFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getWordStatList()
+        handleFlow()
+
         (activity as MainActivity).getBinding().toolbar.tagClickListener =
             this
-        vocabAdapter = VocabsAdapter(
-            listOf(
-                "你好",
-                "你好吗",
-                "我很好",
-                "你呢",
-                "我也很好",
-                "再见",
-                "谢谢",
-                "不客气",
-                "对不起",
-                "没关系",
-                "请问",
-                "请坐",
-                "请喝茶",
-                "请吃饭"
-            ), requireContext()
-        )
+        vocabAdapter = VocabsAdapter(requireContext())
         binding.rvVocabs.adapter = vocabAdapter
         binding.rvVocabs.layoutManager = GridLayoutManager(context, 2)
         binding.rvVocabs.edgeEffectFactory = BounceEdgeEffectFactory()
@@ -99,5 +92,22 @@ class VocabListFragment :
 
     override fun backFromFlashCard() {
         vocabularyNavigation.navigateUp()
+    }
+
+    private fun handleFlow() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getWordStatFlow.collect { response ->
+                when (response) {
+                    is Response.Success -> {
+                        vocabAdapter.updateData(response.data)
+                    }
+
+                    is Response.Error -> {
+                        Toast.makeText(requireContext(), response.exception, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+        }
     }
 }

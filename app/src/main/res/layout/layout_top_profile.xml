@@ -77,7 +77,7 @@
             android:background="@drawable/bg_button"
             android:paddingHorizontal="12dp"
             android:text="Level"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"

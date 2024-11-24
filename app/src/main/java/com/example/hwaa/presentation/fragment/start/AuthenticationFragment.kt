@@ -39,8 +39,10 @@ class AuthenticationFragment :
                 val email = etEmail.text.toString()
                 val password = etPassword.text.toString()
                 if (email.isNotEmpty() && password.isNotEmpty()) {
-                    userEntity = UserEntity(email, password)
+                    userEntity = UserEntity()
                     userEntity?.let {
+                        it.email = email
+                        it.password = password
                         viewModel.login(it)
                         (activity as StartActivity).showLoading()
                     }
@@ -59,10 +61,11 @@ class AuthenticationFragment :
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loginFlow.collect { response ->
+                (activity as StartActivity).hiddenLoading()
                 when (response) {
                     is Response.Success -> {
                         (activity as StartActivity).moveToMainActivity()
-                        userEntity?.let { UserProvider.saveUser(it.translateToUserModel()) }
+                        userEntity?.let { UserProvider.saveUser(UserEntity.translateToUserModel(it)) }
                     }
 
                     is Response.Error -> {

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.example.hwaa.R
@@ -11,6 +12,7 @@ import com.example.hwaa.presentation.activity.main.MainActivity
 import com.example.hwaa.presentation.core.base.BaseActivityNotRequireViewModel
 import com.example.hwaa.databinding.ActivityStartBinding
 import com.example.hwaa.domain.usecase.auth.IsLoggedInUseCase
+import com.example.hwaa.presentation.MyForegroundService
 import com.example.hwaa.presentation.core.base.BaseActivity
 import com.example.hwaa.presentation.fragment.start.StartViewModel
 import com.example.hwaa.presentation.navigation.start.StartNavigation
@@ -24,6 +26,7 @@ import javax.inject.Inject
 class StartActivity : BaseActivity<ActivityStartBinding, StartViewModel>() {
 
     override val layoutId: Int = R.layout.activity_start
+
     @Inject
     lateinit var startNavigation: StartNavigation
 
@@ -33,9 +36,12 @@ class StartActivity : BaseActivity<ActivityStartBinding, StartViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
         startNavigation.bind(navController)
+        val serviceIntent = Intent(this, MyForegroundService::class.java)
+        ContextCompat.startForegroundService(this, serviceIntent)
     }
 
     override fun onStart() {
@@ -47,7 +53,7 @@ class StartActivity : BaseActivity<ActivityStartBinding, StartViewModel>() {
         }
     }
 
-    fun moveToMainActivity(){
+    fun moveToMainActivity() {
         Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

@@ -31,8 +31,8 @@ class WordCardView @JvmOverloads constructor(
         val setIn =
             AnimatorInflater.loadAnimator(context, R.animator.card_flip_in) as AnimatorSet
 
-        setOut.setTarget(if (isFront) binding.cvLessonFront else binding.cvLessonBack)
-        setIn.setTarget(if (isFront) binding.cvLessonBack else binding.cvLessonFront)
+//        setOut.setTarget(if (isFront) binding.cvLessonFront else binding.cvLessonBack)
+//        setIn.setTarget(if (isFront) binding.cvLessonBack else binding.cvLessonFront)
 
         setOut.start()
         setIn.start()

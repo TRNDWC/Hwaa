@@ -43,9 +43,6 @@ abstract class BaseActivityNotRequireViewModel<BD : ViewDataBinding> : AppCompat
         LoadingDialog.getInstance(this)?.hidden()
     }
 
-    /**
-     * Close SoftKeyboard when user click out of EditText
-     */
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {
             val v = currentFocus
@@ -60,6 +57,14 @@ abstract class BaseActivityNotRequireViewModel<BD : ViewDataBinding> : AppCompat
             }
         }
         return super.dispatchTouchEvent(event)
+    }
+
+    fun hideKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 
 }

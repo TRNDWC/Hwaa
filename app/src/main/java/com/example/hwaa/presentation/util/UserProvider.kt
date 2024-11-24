@@ -22,11 +22,9 @@ object UserProvider {
         preferences.edit().putString(KEY_USER, userJson).apply()
     }
 
-    fun getUser(): UserModel? {
+    fun getUser(): UserModel {
         val userJson = preferences.getString(KEY_USER, null)
-        return userJson?.let {
-            gson.fromJson(it, UserModel::class.java)
-        }
+        return gson.fromJson(userJson, UserModel::class.java)
     }
 
     fun clearUserData() {

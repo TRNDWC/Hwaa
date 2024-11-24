@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.webkit.WebViewClient
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -133,7 +134,7 @@ class FragmentDictionary :
                     }
 
                     is Response.Error -> {
-                        Timber.tag("trndwcs").e(response.exception.toString())
+                        Toast.makeText(context, response.exception, Toast.LENGTH_SHORT).show()
                     }
                 }
             }

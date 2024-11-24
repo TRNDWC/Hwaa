@@ -1,8 +1,10 @@
 package com.example.hwaa.presentation.util.ui
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.ProgressBar
 import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
 import com.example.hwaa.R
@@ -45,6 +47,7 @@ class HwaaToolBar @JvmOverloads constructor(
                 val binding =
                     TbLessonFragmentBinding.inflate(LayoutInflater.from(context), this, true)
                 setListenerForLesson(binding)
+                binding.lpiLesson.progress = 0
                 binding
             }
 
@@ -122,6 +125,27 @@ class HwaaToolBar @JvmOverloads constructor(
         binding.ibBack.setOnClickListener {
             tagClickListener?.backFromFlashCard()
         }
+    }
+
+    fun updateProgress(target: Int, isFinished: Boolean = false) {
+        (binding as? TbLessonFragmentBinding)?.apply {
+            var currentProgress = lpiLesson.progress
+            val progressStep = 100 / target
+            if (currentProgress < 100) {
+                if (isFinished) {
+                    currentProgress = 100
+                } else {
+                    currentProgress += progressStep
+                }
+                animateProgress(currentProgress, lpiLesson)
+            }
+        }
+    }
+
+    private fun animateProgress(targetProgress: Int, progressBar: ProgressBar) {
+        val animator = ObjectAnimator.ofInt(progressBar, "progress", targetProgress)
+        animator.duration = 300
+        animator.start()
     }
 
     fun getBinding(): ViewBinding? = binding
