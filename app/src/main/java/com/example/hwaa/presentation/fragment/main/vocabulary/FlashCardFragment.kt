@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.LinearInterpolator
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.hwaa.R
 import com.example.hwaa.presentation.activity.main.MainActivity
 import com.example.hwaa.presentation.core.base.BaseFragment
 import com.example.hwaa.databinding.FragmentFlashCardBinding
+import com.example.hwaa.domain.Response
 import com.example.hwaa.presentation.viewmodel.VocabularyViewModel
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.Direction
 import com.yuyakaido.android.cardstackview.StackFrom
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class FlashCardFragment :
@@ -82,25 +86,8 @@ class FlashCardFragment :
         manager.setCanScrollVertical(false)
 
         cardStackView.layoutManager = manager
-
-        adapter = FlashCardAdapter(
-            listOf(
-                "你好",
-                "你好吗",
-                "我很好",
-                "你呢",
-                "我也很好",
-                "再见",
-                "谢谢",
-                "不客气",
-                "对不起",
-                "没关系",
-                "请问",
-                "请坐",
-                "请喝茶",
-                "请吃饭"
-            ), requireContext()
-        )
-        binding.cardStackView.adapter = adapter
+        adapter = FlashCardAdapter(emptyList(), requireContext())
     }
+
+
 }

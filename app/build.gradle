@@ -109,6 +109,7 @@ dependencies {
     implementation libs.androidx.junit.ktx
     implementation libs.firebase.database
     implementation libs.firebase.storage
+    implementation libs.androidx.palette.ktx
     kapt libs.androidx.lifecycle.livedata.ktx
 
     // Loading Image

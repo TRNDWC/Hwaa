@@ -24,22 +24,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:padding="16dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvChineseCharacter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="汉字"
                     android:layout_margin="16dp"
+                    android:text="汉字"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivVocabImage"/>
+                    app:layout_constraintTop_toBottomOf="@+id/ivVocabImage" />
 
                 <TextView
                     android:id="@+id/tvPinyin"
@@ -57,16 +58,16 @@
                     android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
                     android:background="@drawable/bg_vocab_status"
                     android:backgroundTint="@color/primary_color"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="4dp"
-                    android:layout_margin="16dp"
                     android:text="Status"
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/ivVocabImage"
-                    app:layout_constraintTop_toTopOf="@+id/ivVocabImage"/>
+                    app:layout_constraintTop_toTopOf="@+id/ivVocabImage" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

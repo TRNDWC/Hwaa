@@ -50,9 +50,6 @@ class ForumRepositoryImpl @Inject constructor(
                                 ) { authorFlow, commentsFlow ->
                                     when {
                                         authorFlow is Response.Success && commentsFlow is Response.Success -> {
-                                            Timber.tag("trndwcs").d("Author: ${authorFlow.data}")
-                                            Timber.tag("trndwcs")
-                                                .d("Comments: ${commentsFlow.data}")
                                             BlogEntity().apply {
                                                 id = blogId
                                                 content = blogMap["content"] as String
@@ -65,12 +62,10 @@ class ForumRepositoryImpl @Inject constructor(
                                         }
 
                                         authorFlow is Response.Error -> {
-                                            Timber.tag("trndwcs").e(authorFlow.exception)
                                             throw Exception(authorFlow.exception)
                                         }
 
                                         commentsFlow is Response.Error -> {
-                                            Timber.tag("trndwcs").e(commentsFlow.exception)
                                             throw Exception(commentsFlow.exception)
                                         }
 
@@ -148,7 +143,6 @@ class ForumRepositoryImpl @Inject constructor(
                     val authorDeferreds = mutableListOf<Deferred<Response<UserEntity>>>()
 
                     snapshot.children.forEach { dataSnapshot ->
-                        Timber.tag("trndwcs").d("Comment: ${dataSnapshot.value}")
                         val comment = dataSnapshot.value as HashMap<*, *>
 
                         val deferredAuthor = async {
@@ -180,7 +174,6 @@ class ForumRepositoryImpl @Inject constructor(
                         }
                     }
 
-                    Timber.tag("trndwcs").d("Comment List: ${commentList.size}")
                     trySend(Response.Success(commentList)).isSuccess
                 }
             }

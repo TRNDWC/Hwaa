@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.hwaa.R
+import com.example.hwaa.data.model.WordStatModel
 import com.example.hwaa.databinding.CvFlashCardBinding
 
-class FlashCardAdapter(private val cards: List<String>, private val context: Context) :
+class FlashCardAdapter(private val cards: List<WordStatModel>, private val context: Context) :
     RecyclerView.Adapter<FlashCardAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,11 +23,21 @@ class FlashCardAdapter(private val cards: List<String>, private val context: Con
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val card = cards[position]
-        holder.binding.tvChineseCharacter.text = card
-        holder.binding.tvPinyin.text = card
+        holder.binding.apply {
+            tvChineseCharacter.text = card.word.hanzi
+            tvPinyin.text = card.word.pinyinTone
+            tvMeaning.text = card.word.translation
+            tvExampleSentence.text = card.word.example
+        }
+        Glide.with(context).load(card.word.image).into(holder.binding.ivWordImage)
+
     }
 
     override fun getItemCount(): Int = cards.size
+
+    fun updateData(data: List<WordStatModel>) {
+
+    }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = CvFlashCardBinding.bind(view)
