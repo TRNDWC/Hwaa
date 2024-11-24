@@ -22,16 +22,11 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
     @SuppressLint("NewApi")
     override fun onReceive(context: Context?, intent: Intent?) {
-        Timber.tag("trndwcs").e("NotificationActionReceiver onReceive")
         if (context != null && intent != null) {
             val action = intent.action
             val wordId = intent.getStringExtra("wordId")
             val score = intent.getIntExtra("score", 0)
             val NOTIFICATION_ID = intent.getIntExtra("NOTIFICATION_ID", 0)
-
-
-            Timber.tag("trndwcs")
-                .e("NotificationActionReceiver onReceive action: $action, wordId: $wordId, score: $score, NOTIFICATION_ID: $NOTIFICATION_ID")
 
             val notificationManager = context.getSystemService(NotificationManager::class.java)
 
@@ -51,17 +46,13 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
     private fun updateWordStatScore(wordId: String?, score: Int, isRemember: Boolean) {
         CoroutineScope(Dispatchers.IO).launch {
-            Timber.tag("trndwcs")
-                .e("updateWordStatScore wordId: $wordId, score: $score, isRemember: $isRemember")
             if (wordId != null) {
                 updateWordStatUseCase.invoke(wordId, score, isRemember).collect { response ->
                     when (response) {
                         is Response.Success -> {
-                            Timber.tag("trndwcs").e("Update successful for wordId: $wordId")
                         }
 
                         is Response.Error -> {
-                            Timber.tag("trndwcs").e("Update failed: ${response.exception}")
                         }
                     }
                 }

@@ -92,13 +92,12 @@ class LessonViewModel @Inject constructor(
     }
 
     fun updateWord() {
-        Timber.tag("trndwcs").d("updateWordList: ${updateWordList.size}")
         selectedLesson?.lessonModel?.words = updateWordList
         selectedTopic?.topicModel?.lessons?.forEach {
             if (it.lessonModel.id == selectedLesson?.lessonModel?.id) {
                 it.lessonModel = selectedLesson?.lessonModel!!
+                it.isLearned = true
             }
-            it.isLearned = true
         }
         viewModelScope.launch {
             updateTopicUseCase.invoke(TopicStatEntity.translateToEntity(selectedTopic!!))

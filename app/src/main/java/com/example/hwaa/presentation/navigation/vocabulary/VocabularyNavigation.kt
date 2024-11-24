@@ -4,4 +4,5 @@ import com.example.hwaa.presentation.core.navigatorComponent.BaseNavigator
 
 interface VocabularyNavigation : BaseNavigator {
     fun fromVocabularyToFlashCard()
+    fun fromVocabularyToTest()
 }

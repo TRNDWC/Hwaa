@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hwaa.R
 import com.example.hwaa.presentation.activity.main.MainActivity
@@ -103,6 +104,9 @@ class SettingFragment :
                     is Response.Success -> {
                         profileNavigation.navigateUp()
                         UserProvider.saveUser(userModel)
+                        val intent = Intent("com.example.DATA_CHANGED")
+                        intent.putExtra("key", "Updated Data")
+                        LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
                     }
 
                     is Response.Error -> {

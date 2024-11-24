@@ -1,17 +1,17 @@
 package com.example.hwaa.presentation.fragment.main.vocabulary
 
-import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hwaa.R
+import com.example.hwaa.data.model.TestModel
 import com.example.hwaa.presentation.core.base.BaseFragment
 import com.example.hwaa.databinding.FragmentVocabListBinding
 import com.example.hwaa.domain.Response
@@ -24,16 +24,17 @@ import com.example.hwaa.presentation.util.ui.VocabTag
 import com.example.hwaa.presentation.viewmodel.VocabularyViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class VocabListFragment :
     BaseFragment<FragmentVocabListBinding, VocabularyViewModel>(R.layout.fragment_vocab_list),
-    TagClickListener {
+    TagClickListener, ChallengeClickListener {
 
     @Inject
     lateinit var vocabularyNavigation: VocabularyNavigation
-    private val viewModel: VocabularyViewModel by viewModels()
+    private val viewModel: VocabularyViewModel by activityViewModels()
     private lateinit var vocabAdapter: VocabsAdapter
     private lateinit var challengeAdapter: ChallengeAdapter
     private val tagList: MutableList<TagType> = mutableListOf()
@@ -44,6 +45,7 @@ class VocabListFragment :
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getWordStatList()
+        viewModel.getTestList()
         handleFlow()
 
         (activity as MainActivity).getBinding().toolbar.tagClickListener =
@@ -54,8 +56,11 @@ class VocabListFragment :
         binding.rvVocabs.edgeEffectFactory = BounceEdgeEffectFactory()
 
         binding.icChallengeList.challengesRecyclerView.apply {
-            adapter = ChallengeAdapter()
-            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            challengeAdapter = ChallengeAdapter(this@VocabListFragment)
+            adapter = challengeAdapter
+            layoutManager = LinearLayoutManager(
+                context, RecyclerView.HORIZONTAL, false
+            )
         }
 
         binding.icChallengeList.chipGroup.apply {
@@ -109,5 +114,27 @@ class VocabListFragment :
                 }
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getTestListFlow.collect { response ->
+                Timber.tag("trndwcs").d("Response received: $response")
+                when (response) {
+                    is Response.Success -> {
+                        Timber.tag("trndwcs").d("getTestListFlow: ${response.data.size}")
+                        challengeAdapter.updateData(response.data)
+                    }
+
+                    is Response.Error -> {
+                        Toast.makeText(requireContext(), response.exception, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onChallengeClick(challenge: TestModel) {
+        viewModel.selectedChallenge = challenge
+        vocabularyNavigation.fromVocabularyToTest()
     }
 }
